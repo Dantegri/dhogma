@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DHOGMA Inmuebles — Construcción Residencial en Monterrey</title>
+  <meta name="description" content="Más de 30 años construyendo residencias en zona sur de Monterrey y Santiago. Proyecto y construcción sin salir de presupuesto." />
+  <meta name="keywords" content="construcción residencial Monterrey, constructora zona sur Monterrey, construcción Santiago NL, impermeabilización Monterrey" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DHOGMA Inmuebles — Tu espacio, tal como lo quieres" />
+  <meta property="og:description" content="Más de 30 años construyendo residencias. Sin salir de presupuesto." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="logo">
+        <span class="logo-name">DHOGMA</span>
+        <span class="logo-sub">Inmuebles · Construcción Residencial</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#propiedades">Propiedades</a></li>
+        <li><a href="#inversionistas">Inversionistas</a></li>
+        <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-tag">Zona Sur Monterrey · Carretera Nacional · Santiago</p>
+
+        <h1>Tu espacio,<br /><em>tal como lo quieres.</em></h1>
+
+        <p>
+          Construimos tu residencia de principio a fin, sin sorpresas en el presupuesto.
+          Más de 30 años de experiencia en construcción residencial en el área metropolitana de Monterrey.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contacto" class="btn-primary">
+            Iniciar mi proyecto
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#proyectos" class="btn-outline">Ver proyectos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">65+</div>
+        <div class="stat-label">Residencias entregadas</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">30</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Dentro de presupuesto</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       NOSOTROS
+  ══════════════════════════════════════════ -->
+  <section id="nosotros">
+    <div class="container">
+      <div class="nosotros-grid">
+
+        <div class="nosotros-image fade-in">
+          <!-- Reemplazar con foto real de obra -->
+          <img
+            src="assets/images/nosotros.jpg"
+            alt="Obra residencial DHOGMA"
+            onerror="this.style.background='#E8E7E3'; this.style.minHeight='520px'; this.removeAttribute('src');"
+          />
+          <div class="nosotros-image-badge">
+            <div class="num">30+</div>
+            <div class="text">Años en el mercado</div>
+          </div>
+        </div>
+
+        <div class="nosotros-content fade-in">
+          <span class="section-label">Quiénes somos</span>
+          <h2>Construimos con el cuidado de quien va a vivir ahí.</h2>
+
+          <p>
+            DHOGMA Inmuebles nace de más de tres décadas de experiencia en el
+            mantenimiento, construcción y venta de vivienda unifamiliar en el área
+            metropolitana de Monterrey.
+          </p>
+
+          <p>
+            Nos especializamos en acompañar a profesionales ocupados que ya tienen
+            su terreno y quieren construir su casa sin tener que gestionar cada
+            detalle de la obra. Nos hacemos cargo de todo: desde la recepción del
+            terreno hasta la entrega con llave en mano.
+          </p>
+
+          <div class="nosotros-promise">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.5" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <p>
+              Nuestra promesa: <strong>tu proyecto no sale de presupuesto.</strong>
+              La experiencia y capacitación de 30 años nos permiten prever y resolver
+              antes de que los imprevistos lleguen a tu bolsillo.
+            </p>
+          </div>
+
+          <div class="certifications">
+            <span class="cert-tag">Sika Mexicana</span>
+            <span class="cert-tag">Grupo Thermotek</span>
+            <span class="cert-tag">Chovatek</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SERVICIOS
+  ══════════════════════════════════════════ -->
+  <section id="servicios">
+    <div class="container">
+      <span class="section-label">Lo que hacemos</span>
+      <h2>Servicios que cubren tu proyecto de inicio a fin.</h2>
+
+      <div class="servicios-grid fade-in">
+
+        <!-- FEATURED -->
+        <div class="servicio-card featured">
+          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <h3>Construcción Residencial Nueva</h3>
+          <p>
+            Desde la recepción del terreno hasta la entrega con llave en mano.
+            Gestionamos proyecto arquitectónico, licencias, estructura, acabados y
+            supervisión de obra completa.<br /><br />
+            Proyectos de $3 a $10 millones MXN en zona sur de Monterrey, Carretera
+            Nacional y Santiago.
+          </p>
+        </div>
+
+        <!-- Impermeabilización -->
+        <div class="servicio-card">
+          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
+          </svg>
+          <h3>Impermeabilización Residencial</h3>
+          <p>Techos, muros, cisternas y cimentaciones. Soluciones específicas por sistema Sika y Chovatek.</p>
+        </div>
+
+        <!-- Aislamiento -->
+        <div class="servicio-card">
+          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 3v1m0 16v1M4.22 4.22l.7.7m12.16 12.16l.7.7M1 12h2m18 0h2M4.22 19.78l.7-.7M18.36 5.64l.7-.7"/><circle cx="12" cy="12" r="5"/>
+          </svg>
+          <h3>Aislamiento Térmico</h3>
+          <p>Poliuretano, poliestireno extruido y Termolita en techos, muros y pisos para maximizar confort y reducir costos de clima.</p>
+        </div>
+
+        <!-- Acabados -->
+        <div class="servicio-card">
+          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+          <h3>Acabados Grado Residencial</h3>
+          <p>Pintura arquitectónica, texturizados, cantera, pisos cerámicos y porcelánicos, mármol y granito.</p>
+        </div>
+
+        <!-- Servicios indirectos -->
+        <div class="servicio-card">
+          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <h3>Gestión de Licencias y Proyección</h3>
+          <p>Tramitamos licencias de construcción, proyección arquitectónica y cálculo estructural. Primera puerta, sin complicaciones.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PROYECTOS
+  ══════════════════════════════════════════ -->
+  <section id="proyectos">
+    <div class="container">
+      <div class="proyectos-header fade-in">
+        <div>
+          <span class="section-label">Portafolio</span>
+          <h2>65+ residencias entregadas.</h2>
+        </div>
+        <a href="#contacto">
+          Iniciar proyecto
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="proyectos-grid fade-in">
+
+        <div class="proyecto-card">
+          <!-- Reemplazar con foto real -->
+          <div class="proyecto-placeholder">Foto de proyecto</div>
+          <div class="proyecto-overlay">
+            <div class="proyecto-info">
+              <h4>Residencia Cumbres</h4>
+              <span>Medio-Alto · 280 m²</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proyecto-card">
+          <div class="proyecto-placeholder">Foto de proyecto</div>
+          <div class="proyecto-overlay">
+            <div class="proyecto-info">
+              <h4>Residencia Santiago</h4>
+              <span>Lujo · 420 m²</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proyecto-card">
+          <div class="proyecto-placeholder">Foto de proyecto</div>
+          <div class="proyecto-overlay">
+            <div class="proyecto-info">
+              <h4>Residencia Carretera Nacional</h4>
+              <span>Medio-Alto · 310 m²</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PROPIEDADES — Tokko Broker Widget
+  ══════════════════════════════════════════ -->
+  <section id="propiedades">
+    <div class="container">
+      <span class="section-label">En venta ahora</span>
+      <h2>Propiedades disponibles.</h2>
+      <p class="section-intro">Residencias terminadas listas para habitar en zona sur de Monterrey y Santiago.</p>
+
+      <div class="tokko-embed-wrapper">
+        <!--
+          ══════════════════════════════════════════════════════
+          TOKKO BROKER WIDGET — Instrucciones de instalación:
+
+          1. Ingresa a tu cuenta de Tokko Broker
+          2. Ve a: Configuración → Integraciones → Widget
+          3. Personaliza el widget con tu API key
+          4. Copia el código iframe o script que genera
+          5. Reemplaza este bloque de comentario con ese código
+
+          Ejemplo de estructura típica:
+          <iframe src="https://tokkobroker.com/widget/?key=TU_API_KEY&..."></iframe>
+          ══════════════════════════════════════════════════════
+        -->
+        <div class="tokko-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#6B6B6B">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+          <p>Widget de propiedades Tokko Broker — pendiente de configuración</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       INVERSIONISTAS
+  ══════════════════════════════════════════ -->
+  <section id="inversionistas">
+    <div class="container">
+      <div class="inversionistas-content fade-in">
+        <span class="section-label">Programa de inversión</span>
+        <h2>Construye patrimonio sin ocupar tu tiempo.</h2>
+
+        <p>
+          Diversos inversionistas han confiado en DHOGMA para obtener rendimientos
+          a mediano plazo mediante la edificación y venta de vivienda unifamiliar.
+          Tú pones el capital — nosotros nos encargamos de todo lo demás.
+        </p>
+
+        <div class="proceso-steps">
+          <div class="paso">
+            <div class="paso-num">Paso 01</div>
+            <h4>Validación y compra del terreno</h4>
+            <p>Analizamos opciones, validamos viabilidad y gestionamos la compra.</p>
+          </div>
+          <div class="paso">
+            <div class="paso-num">Paso 02</div>
+            <h4>Proyecto y construcción</h4>
+            <p>Desarrollamos el proyecto completo y ejecutamos la obra dentro de presupuesto.</p>
+          </div>
+          <div class="paso">
+            <div class="paso-num">Paso 03</div>
+            <h4>Venta del inmueble</h4>
+            <p>Comercializamos la propiedad terminada y entregamos rendimiento al inversionista.</p>
+          </div>
+          <div class="paso">
+            <div class="paso-num">Paso 04</div>
+            <h4>Garantía y postventa</h4>
+            <p>Asumimos responsabilidad total frente al comprador final.</p>
+          </div>
+        </div>
+
+        <a href="#contacto" class="btn-primary">Quiero más información</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       CONTACTO
+  ══════════════════════════════════════════ -->
+  <section id="contacto">
+    <div class="container">
+      <div class="contacto-grid">
+
+        <div class="contacto-info fade-in">
+          <span class="section-label">Hablemos</span>
+          <h2>Cuéntanos tu proyecto.</h2>
+          <p>
+            Ya tienes tu terreno y quieres construir — o quieres explorar una inversión.
+            Contáctanos y agendamos una visita sin compromiso.
+          </p>
+
+          <div class="contacto-links">
+            <a
+              href="https://wa.me/528110000000?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20construcción"
+              class="contacto-link whatsapp"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.876L0 24l6.281-1.513A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.36-.213-3.727.977.994-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/>
+              </svg>
+              WhatsApp directo
+            </a>
+
+            <a href="tel:+528110000000" class="contacto-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 12a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1.28h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9a16 16 0 006 6l1.08-1.26a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+              (81) 1000-0000
+            </a>
+
+            <a href="mailto:info@dhogma.com" class="contacto-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+              info@dhogma.com
+            </a>
+          </div>
+
+          <p class="zona-badge">Zona Sur · Carretera Nacional · Santiago, N.L.</p>
+        </div>
+
+        <div class="fade-in">
+          <form id="contact-form" class="contacto-form">
+            <!-- Web3Forms access key — reemplazar con tu key real de web3forms.com -->
+            <input type="hidden" name="access_key" value="TU_WEB3FORMS_KEY_AQUI" />
+            <input type="hidden" name="subject" value="Nuevo contacto desde dhogma.com" />
+            <input type="hidden" name="redirect" value="false" />
+            <input type="checkbox" name="botcheck" style="display:none" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" required placeholder="(81) ···" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" required placeholder="tu@correo.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="interes">Me interesa</label>
+              <select id="interes" name="interes">
+                <option value="">Selecciona una opción</option>
+                <option value="construccion">Construir mi residencia</option>
+                <option value="remodelacion">Remodelación</option>
+                <option value="inversion">Programa de inversionistas</option>
+                <option value="impermeabilizacion">Impermeabilización / Mantenimiento</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">Cuéntame más (opcional)</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Tengo un terreno en... / Quiero construir..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%; justify-content:center; border:none; cursor:pointer; font-size:0.8rem;">
+              Enviar mensaje
+            </button>
+          </form>
+
+          <div id="form-success" class="form-success">
+            ¡Mensaje recibido! Te contactamos en menos de 24 horas.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="logo-name" style="font-family:'Montserrat',sans-serif; font-size:1.1rem; font-weight:800; letter-spacing:0.08em; color:#F5F4F0;">DHOGMA</div>
+          <div class="footer-copy" style="margin-top:0.4rem;">
+            © 2025 DHOGMA Inmuebles SA de CV — Zona Sur Monterrey, N.L.
+          </div>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════
+       WHATSAPP FLOAT
+  ══════════════════════════════════════════ -->
+  <a
+    href="https://wa.me/528110000000?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20construcción"
+    class="wa-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Contactar por WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.537 5.876L0 24l6.281-1.513A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.36-.213-3.727.977.994-3.634-.234-.374A9.818 9.818 0 1112 21.818z"/>
+    </svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
