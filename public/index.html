@@ -46,9 +46,9 @@
 
       <ul class="nav-links" id="nav-links">
         <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Proceso</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#propiedades">Propiedades</a></li>
+        <li><a href="#terrenos">Terrenos</a></li>
         <li><a href="#inversionistas">Inversionistas</a></li>
         <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
       </ul>
@@ -74,7 +74,7 @@
 
         <p>
           Construimos tu residencia de principio a fin, sin sorpresas en el presupuesto.
-          Más de 30 años de experiencia en construcción residencial en el área metropolitana de Monterrey.
+          Más de 20 años de experiencia en construcción residencial en el área metropolitana de Monterrey.
         </p>
 
         <div class="hero-actions">
@@ -94,7 +94,7 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <div class="stat-number">30</div>
+        <div class="stat-number">20</div>
         <div class="stat-label">Años de experiencia</div>
       </div>
       <div class="stat-divider"></div>
@@ -113,40 +113,34 @@
       <div class="nosotros-grid">
 
         <div class="nosotros-image fade-in">
-          <!-- Reemplazar con foto real de obra -->
-          <img
-            src="assets/images/nosotros.jpeg"
-            alt="Obra residencial DHOGMA"
-          />
+          <img src="assets/images/nosotros.jpeg" alt="Equipo DHOGMA en obra residencial" />
           <div class="nosotros-image-badge">
-            <div class="num">30+</div>
+            <div class="num">20+</div>
             <div class="text">Años en el mercado</div>
           </div>
         </div>
 
         <div class="nosotros-content fade-in">
           <span class="section-label">Quiénes somos</span>
-          <h2>Construimos con el cuidado de quien va a vivir ahí.</h2>
+          <h2>Construimos tu patrimonio con experiencia, orden y claridad.</h2>
 
           <p>
-            DHOGMA Inmuebles nace de más de tres décadas de experiencia en el
-            mantenimiento, construcción y venta de vivienda unifamiliar en el área
-            metropolitana de Monterrey.
+            Somos un grupo de profesionales enfocados en brindar servicios de construcción
+            residencial con más de 20 años de experiencia en el sector. Nuestro enfoque es
+            construir tu patrimonio.
           </p>
 
           <p>
-            Nos especializamos en acompañar a profesionales ocupados que ya tienen
-            su terreno y quieren construir su casa sin tener que gestionar cada
-            detalle de la obra. Nos hacemos cargo de todo: desde la recepción del
-            terreno hasta la entrega con llave en mano.
+            Nuestros servicios van desde asesorarte para la adquisición de tu terreno,
+            hasta entregarte la llave de tu hogar — acompañándote en cada momento y
+            brindándote claridad en cada etapa, cuidando lo tuyo para los tuyos.
           </p>
 
           <div class="nosotros-promise">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.5" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
             <p>
-              Nuestra promesa: <strong>tu proyecto no sale de presupuesto.</strong>
-              La experiencia y capacitación de 30 años nos permiten prever y resolver
-              antes de que los imprevistos lleguen a tu bolsillo.
+              Nuestra promesa: <strong>experiencia, orden y claridad a tu servicio</strong>
+              para que tu proyecto no salga de presupuesto.
             </p>
           </div>
 
@@ -162,64 +156,152 @@
   </section>
 
   <!-- ══════════════════════════════════════════
-       SERVICIOS
+       PROCESO — Timeline interactivo 5 fases
   ══════════════════════════════════════════ -->
-  <section id="servicios">
+  <section id="proceso">
     <div class="container">
-      <span class="section-label">Lo que hacemos</span>
-      <h2>Servicios que cubren tu proyecto de inicio a fin.</h2>
+      <span class="section-label">Así construimos tu proyecto</span>
+      <h2>Te acompañamos en cada etapa, desde el análisis del terreno hasta la <em style="font-style:normal; color:var(--red)">entrega de tu hogar.</em></h2>
 
-      <div class="servicios-grid fade-in">
+      <div class="proceso-tabs" id="proceso-tabs">
+        <button class="ptab active" data-fase="1">
+          <span class="ptab-num">01</span>
+          <span class="ptab-label">Estudio del terreno</span>
+        </button>
+        <button class="ptab" data-fase="2">
+          <span class="ptab-num">02</span>
+          <span class="ptab-label">Diseño</span>
+        </button>
+        <button class="ptab" data-fase="3">
+          <span class="ptab-num">03</span>
+          <span class="ptab-label">Gestión</span>
+        </button>
+        <button class="ptab" data-fase="4">
+          <span class="ptab-num">04</span>
+          <span class="ptab-label">Planeación</span>
+        </button>
+        <button class="ptab" data-fase="5">
+          <span class="ptab-num">05</span>
+          <span class="ptab-label">Construcción</span>
+        </button>
+      </div>
 
-        <!-- FEATURED -->
-        <div class="servicio-card featured">
-          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-          <h3>Construcción Residencial Nueva</h3>
-          <p>
-            Desde la recepción del terreno hasta la entrega con llave en mano.
-            Gestionamos proyecto arquitectónico, licencias, estructura, acabados y
-            supervisión de obra completa.<br /><br />
-            Proyectos de $3 a $10 millones MXN en zona sur de Monterrey, Carretera
-            Nacional y Santiago.
-          </p>
+      <div class="proceso-content">
+
+        <div class="fase-panel active" data-fase="1">
+          <div class="fase-steps">
+            <div class="fase-step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h4>Deslinde de terreno</h4>
+                <p>Definimos con precisión los límites de tu propiedad para construir con total certeza y seguridad jurídica.</p>
+              </div>
+            </div>
+            <div class="fase-step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h4>Levantamiento topográfico</h4>
+                <p>Obtenemos las medidas y características reales del terreno como base para un proyecto exitoso.</p>
+              </div>
+            </div>
+            <div class="fase-step">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h4>Curvas de nivel</h4>
+                <p>Analizamos la pendiente y el relieve del terreno para optimizar el diseño, la construcción y los costos.</p>
+              </div>
+            </div>
+            <div class="fase-step">
+              <div class="step-num">4</div>
+              <div class="step-body">
+                <h4>Mecánica de suelo</h4>
+                <p>Evaluamos la capacidad del terreno para garantizar una cimentación segura, eficiente y duradera.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Impermeabilización -->
-        <div class="servicio-card">
-          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
-          </svg>
-          <h3>Impermeabilización Residencial</h3>
-          <p>Techos, muros, cisternas y cimentaciones. Soluciones específicas por sistema Sika y Chovatek.</p>
+        <div class="fase-panel" data-fase="2">
+          <div class="fase-steps">
+            <div class="fase-step">
+              <div class="step-num">5</div>
+              <div class="step-body">
+                <h4>Revisión de reglamento interno</h4>
+                <p>Verificamos las normas del fraccionamiento o desarrollo para que tu proyecto cumpla desde el primer día.</p>
+              </div>
+            </div>
+            <div class="fase-step">
+              <div class="step-num">6</div>
+              <div class="step-body">
+                <h4>Anteproyecto</h4>
+                <p>Transformamos tus ideas en una propuesta arquitectónica funcional, estética y adaptada a tus necesidades.</p>
+              </div>
+            </div>
+            <div class="fase-step">
+              <div class="step-num">7</div>
+              <div class="step-body">
+                <h4>Cálculo estructural</h4>
+                <p>Diseñamos la estructura de tu proyecto para ofrecer seguridad, estabilidad y cumplimiento normativo.</p>
+              </div>
+            </div>
+            <div class="fase-step">
+              <div class="step-num">8</div>
+              <div class="step-body">
+                <h4>Proyecto ejecutivo</h4>
+                <p>Desarrollamos todos los planos y especificaciones técnicas necesarios para construir con precisión.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Aislamiento -->
-        <div class="servicio-card">
-          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 3v1m0 16v1M4.22 4.22l.7.7m12.16 12.16l.7.7M1 12h2m18 0h2M4.22 19.78l.7-.7M18.36 5.64l.7-.7"/><circle cx="12" cy="12" r="5"/>
-          </svg>
-          <h3>Aislamiento Térmico</h3>
-          <p>Poliuretano, poliestireno extruido y Termolita en techos, muros y pisos para maximizar confort y reducir costos de clima.</p>
+        <div class="fase-panel" data-fase="3">
+          <div class="fase-steps">
+            <div class="fase-step">
+              <div class="step-num">9</div>
+              <div class="step-body">
+                <h4>Licencia de construcción</h4>
+                <p>Gestionamos los permisos necesarios para que tu obra inicie de forma legal y sin contratiempos.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Acabados -->
-        <div class="servicio-card">
-          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-          </svg>
-          <h3>Acabados Grado Residencial</h3>
-          <p>Pintura arquitectónica, texturizados, cantera, pisos cerámicos y porcelánicos, mármol y granito.</p>
+        <div class="fase-panel" data-fase="4">
+          <div class="fase-steps">
+            <div class="fase-step">
+              <div class="step-num">10</div>
+              <div class="step-body">
+                <h4>Catálogo de conceptos</h4>
+                <p>Elaboramos un presupuesto detallado con cada concepto de obra para brindarte claridad y control financiero.</p>
+              </div>
+            </div>
+            <div class="fase-step">
+              <div class="step-num">11</div>
+              <div class="step-body">
+                <h4>Programa de inversión y avance</h4>
+                <p>Planificamos la inversión y el calendario de ejecución para mantener el control del presupuesto y los tiempos de construcción.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Servicios indirectos -->
-        <div class="servicio-card">
-          <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-          <h3>Gestión de Licencias y Proyección</h3>
-          <p>Tramitamos licencias de construcción, proyección arquitectónica y cálculo estructural. Primera puerta, sin complicaciones.</p>
+        <div class="fase-panel" data-fase="5">
+          <div class="fase-steps">
+            <div class="fase-step">
+              <div class="step-num">12</div>
+              <div class="step-body">
+                <h4>Inicio de obra</h4>
+                <p>Ejecutamos tu proyecto con supervisión profesional, calidad y cumplimiento en cada etapa.</p>
+              </div>
+            </div>
+            <div class="fase-step featured-step">
+              <div class="step-num">13</div>
+              <div class="step-body">
+                <h4>Entrega de tu hogar</h4>
+                <p>Tu proyecto terminado, listo para disfrutar y construir momentos inolvidables.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -279,35 +361,75 @@
   </section>
 
   <!-- ══════════════════════════════════════════
-       PROPIEDADES — Tokko Broker Widget
+       TERRENOS
   ══════════════════════════════════════════ -->
-  <section id="propiedades">
+  <section id="terrenos">
     <div class="container">
-      <span class="section-label">En venta ahora</span>
-      <h2>Propiedades disponibles.</h2>
-      <p class="section-intro">Residencias terminadas listas para habitar en zona sur de Monterrey y Santiago.</p>
-
-      <div class="tokko-embed-wrapper">
-        <!--
-          ══════════════════════════════════════════════════════
-          TOKKO BROKER WIDGET — Instrucciones de instalación:
-
-          1. Ingresa a tu cuenta de Tokko Broker
-          2. Ve a: Configuración → Integraciones → Widget
-          3. Personaliza el widget con tu API key
-          4. Copia el código iframe o script que genera
-          5. Reemplaza este bloque de comentario con ese código
-
-          Ejemplo de estructura típica:
-          <iframe src="https://tokkobroker.com/widget/?key=TU_API_KEY&..."></iframe>
-          ══════════════════════════════════════════════════════
-        -->
-        <div class="tokko-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#6B6B6B">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-          </svg>
-          <p>Widget de propiedades Tokko Broker — pendiente de configuración</p>
+      <div class="terrenos-header fade-in">
+        <div>
+          <span class="section-label">Oportunidades de inversión</span>
+          <h2>Terrenos en preventa.</h2>
+          <p class="section-intro">Opciones seleccionadas en Carretera Nacional y zona sur de Monterrey, con potencial de construcción residencial.</p>
         </div>
+        <a href="#contacto" class="btn-primary">
+          Solicitar información
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="terrenos-grid fade-in">
+
+        <div class="terreno-card">
+          <div class="terreno-img">
+            <div class="terreno-badge">Preventa</div>
+          </div>
+          <div class="terreno-info">
+            <div class="terreno-zona">Carretera Nacional</div>
+            <h3>Terreno en fraccionamiento privado</h3>
+            <div class="terreno-specs">
+              <span>— m²</span>
+              <span>Uso residencial</span>
+            </div>
+            <a href="https://wa.me/528112552881?text=Hola%2C%20me%20interesa%20el%20terreno%20en%20Carretera%20Nacional" class="terreno-cta" target="_blank" rel="noopener">
+              Consultar precio →
+            </a>
+          </div>
+        </div>
+
+        <div class="terreno-card">
+          <div class="terreno-img">
+            <div class="terreno-badge">Preventa</div>
+          </div>
+          <div class="terreno-info">
+            <div class="terreno-zona">Carretera Nacional</div>
+            <h3>Terreno en fraccionamiento privado</h3>
+            <div class="terreno-specs">
+              <span>— m²</span>
+              <span>Uso residencial</span>
+            </div>
+            <a href="https://wa.me/528112552881?text=Hola%2C%20me%20interesa%20el%20terreno%20en%20Carretera%20Nacional" class="terreno-cta" target="_blank" rel="noopener">
+              Consultar precio →
+            </a>
+          </div>
+        </div>
+
+        <div class="terreno-card">
+          <div class="terreno-img">
+            <div class="terreno-badge">Preventa</div>
+          </div>
+          <div class="terreno-info">
+            <div class="terreno-zona">Santiago, N.L.</div>
+            <h3>Terreno en fraccionamiento privado</h3>
+            <div class="terreno-specs">
+              <span>— m²</span>
+              <span>Uso residencial</span>
+            </div>
+            <a href="https://wa.me/528112552881?text=Hola%2C%20me%20interesa%20el%20terreno%20en%20Santiago" class="terreno-cta" target="_blank" rel="noopener">
+              Consultar precio →
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -472,8 +594,9 @@
 
         <ul class="footer-links">
           <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Proceso</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#terrenos">Terrenos</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>

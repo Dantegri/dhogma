@@ -69,6 +69,20 @@ if (form) {
   });
 }
 
+// ── Proceso tabs ──
+const tabs   = document.querySelectorAll('.ptab');
+const panels = document.querySelectorAll('.fase-panel');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const fase = tab.dataset.fase;
+    tabs.forEach(t => t.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.fase-panel[data-fase="${fase}"]`).classList.add('active');
+  });
+});
+
 // ── Intersection Observer — fade-in on scroll ──
 const observer = new IntersectionObserver(
   entries => {
