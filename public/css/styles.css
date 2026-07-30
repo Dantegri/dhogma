@@ -82,26 +82,18 @@ section { padding: 6rem 0; }
 
 .logo {
   display: flex;
-  flex-direction: column;
-  gap: 1px;
+  align-items: center;
 }
 
-.logo-name {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
 }
 
-.logo-sub {
-  font-family: var(--font-heading);
-  font-size: 0.55rem;
-  font-weight: 400;
-  color: var(--red);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+@media (max-width: 480px) {
+  .logo-img { height: 36px; }
 }
 
 .nav-links {
