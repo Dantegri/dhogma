@@ -89,7 +89,6 @@ section { padding: 6rem 0; }
   height: 44px;
   width: auto;
   object-fit: contain;
-  mix-blend-mode: screen;
 }
 
 @media (max-width: 480px) {
