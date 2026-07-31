@@ -357,8 +357,9 @@ section { padding: 6rem 0; }
 
 .nosotros-image img {
   width: 100%;
-  aspect-ratio: 1448 / 1086;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  object-position: right center;
   border-radius: 2px;
 }
 
@@ -436,6 +437,36 @@ section { padding: 6rem 0; }
   border: 1px solid var(--gray-light);
   padding: 0.4rem 0.8rem;
   border-radius: 2px;
+}
+
+.nosotros-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2.5rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.nosotros-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--gray-light);
+}
+
+.nosotros-pillar strong {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.nosotros-pillar span {
+  font-size: 0.82rem;
+  color: var(--gray-mid);
+  line-height: 1.45;
 }
 
 /* ============================================================
