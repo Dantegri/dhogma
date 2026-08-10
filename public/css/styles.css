@@ -772,12 +772,12 @@ section { padding: 6rem 0; }
 
 .ptimeline-step.step-active {
   display: block;
-  animation: stepIn 0.28s ease forwards;
+  animation: stepIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes stepIn {
-  from { opacity: 0; transform: translateX(12px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: scale(0.92) translateY(6px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
 }
 
 .ptimeline-step h4 {
@@ -818,7 +818,8 @@ section { padding: 6rem 0; }
 
 .pnav-dot.active {
   background: var(--red);
-  transform: scale(1.35);
+  transform: scale(1.5);
+  transition: background 0.25s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {

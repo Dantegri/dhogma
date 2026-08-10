@@ -121,16 +121,17 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     p.el.querySelector('.ptimeline-steps').appendChild(nav);
   });
 
-  // Altura total = intro + (1 unidad por fase + 1 por cada paso)
-  const totalUnits = data.reduce((s, p) => s + 1 + p.steps.length, 0);
-  section.style.minHeight = (INTRO_PX + totalUnits * UNIT_PX) + 'px';
-
   // Hace el contenido sticky — sin gaps visuales
   inner.style.position = 'sticky';
   inner.style.top = '5rem';
 
+  // minHeight incluye la altura del contenido para que el scroll no se agote antes
+  const totalUnits = data.reduce((s, p) => s + p.steps.length, 0);
+  section.style.minHeight = (inner.offsetHeight + INTRO_PX + totalUnits * UNIT_PX) + 'px';
+
   function updateActive() {
-    const scrolled = -section.getBoundingClientRect().top - INTRO_PX;
+    // scrollY relativo al inicio de la sección (más estable que getBoundingClientRect)
+    const scrolled = window.scrollY - section.offsetTop - INTRO_PX;
 
     // Mapea el scroll a fase activa y paso activo
     let remaining = Math.max(0, scrolled);
@@ -138,11 +139,11 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     let activeStep  = 0;
 
     for (let pi = 0; pi < data.length; pi++) {
-      const budget = (1 + data[pi].steps.length) * UNIT_PX;
+      const budget = data[pi].steps.length * UNIT_PX;
       if (remaining < budget || pi === data.length - 1) {
         activePhase = pi;
         activeStep  = Math.min(
-          Math.max(0, Math.floor((remaining - UNIT_PX) / UNIT_PX)),
+          Math.floor(remaining / UNIT_PX),
           data[pi].steps.length - 1
         );
         break;
