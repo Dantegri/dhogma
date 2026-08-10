@@ -84,66 +84,79 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ── Proceso: scroll carousel — fases + pasos ──
+// ── Proceso: sticky scroll — fases + pasos sin padding visual ──
 (function () {
-  const phases = Array.from(document.querySelectorAll('.ptimeline-fase'));
+  const section = document.getElementById('proceso');
+  if (!section) return;
+
+  const inner = section.querySelector('.container');
+  const phases = Array.from(section.querySelectorAll('.ptimeline-fase'));
   if (!phases.length) return;
 
-  const STEP_PX = 180; // px de scroll por paso dentro de una fase
+  const UNIT_PX  = 220;  // px de scroll por unidad (fase o paso)
+  const INTRO_PX = 320;  // scroll inicial antes de activar la primera fase
 
-  // Init: puntos indicadores y espacio de scroll por fase
-  phases.forEach(fase => {
-    const steps = Array.from(fase.querySelectorAll('.ptimeline-step'));
-    if (!steps.length) return;
+  // Datos de cada fase con sus pasos
+  const data = phases.map(fase => ({
+    el: fase,
+    steps: Array.from(fase.querySelectorAll('.ptimeline-step'))
+  }));
 
-    steps[0].classList.add('step-active');
+  // Init dots + primer paso activo
+  data.forEach(p => {
+    if (!p.steps.length) return;
+    p.steps[0].classList.add('step-active');
+    if (p.steps.length < 2) return;
 
-    if (steps.length > 1) {
-      // Dots como indicadores (sin botones)
-      const nav = document.createElement('div');
-      nav.className = 'ptimeline-nav';
-      const dotsEl = document.createElement('div');
-      dotsEl.className = 'pnav-dots';
-      steps.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.className = 'pnav-dot' + (i === 0 ? ' active' : '');
-        dotsEl.appendChild(dot);
-      });
-      nav.appendChild(dotsEl);
-      fase.querySelector('.ptimeline-steps').appendChild(nav);
-
-      // Expande la fase en el DOM para tener room de scroll entre pasos
-      fase.style.paddingBottom = (steps.length * STEP_PX) + 'px';
-    }
+    const nav = document.createElement('div');
+    nav.className = 'ptimeline-nav';
+    const dotsEl = document.createElement('div');
+    dotsEl.className = 'pnav-dots';
+    p.steps.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'pnav-dot' + (i === 0 ? ' active' : '');
+      dotsEl.appendChild(dot);
+    });
+    nav.appendChild(dotsEl);
+    p.el.querySelector('.ptimeline-steps').appendChild(nav);
   });
 
+  // Altura total = intro + (1 unidad por fase + 1 por cada paso)
+  const totalUnits = data.reduce((s, p) => s + 1 + p.steps.length, 0);
+  section.style.minHeight = (INTRO_PX + totalUnits * UNIT_PX) + 'px';
+
+  // Hace el contenido sticky — sin gaps visuales
+  inner.style.position = 'sticky';
+  inner.style.top = '5rem';
+
   function updateActive() {
-    const trigger = window.innerHeight * 0.42;
+    const scrolled = -section.getBoundingClientRect().top - INTRO_PX;
 
-    // Determina cuál fase es la activa
-    let activeIndex = 0;
-    phases.forEach((fase, i) => {
-      if (fase.getBoundingClientRect().top <= trigger) activeIndex = i;
-    });
+    // Mapea el scroll a fase activa y paso activo
+    let remaining = Math.max(0, scrolled);
+    let activePhase = 0;
+    let activeStep  = 0;
 
-    phases.forEach((fase, i) => fase.classList.toggle('active', i === activeIndex));
-
-    // Calcula el paso activo dentro de la fase activa
-    const activeFase = phases[activeIndex];
-    const steps = Array.from(activeFase.querySelectorAll('.ptimeline-step'));
-
-    if (steps.length > 1) {
-      const scrolledIn = trigger - activeFase.getBoundingClientRect().top;
-      const stepIndex = Math.min(
-        Math.max(0, Math.floor(scrolledIn / STEP_PX)),
-        steps.length - 1
-      );
-
-      steps.forEach((step, si) => step.classList.toggle('step-active', si === stepIndex));
-
-      const dots = activeFase.querySelectorAll('.pnav-dot');
-      dots.forEach((dot, di) => dot.classList.toggle('active', di === stepIndex));
+    for (let pi = 0; pi < data.length; pi++) {
+      const budget = (1 + data[pi].steps.length) * UNIT_PX;
+      if (remaining < budget || pi === data.length - 1) {
+        activePhase = pi;
+        activeStep  = Math.min(
+          Math.max(0, Math.floor((remaining - UNIT_PX) / UNIT_PX)),
+          data[pi].steps.length - 1
+        );
+        break;
+      }
+      remaining -= budget;
     }
+
+    data.forEach((p, pi) => {
+      const on = pi === activePhase;
+      p.el.classList.toggle('active', on);
+      if (!on || p.steps.length < 2) return;
+      p.steps.forEach((s, si) => s.classList.toggle('step-active', si === activeStep));
+      p.el.querySelectorAll('.pnav-dot').forEach((d, di) => d.classList.toggle('active', di === activeStep));
+    });
   }
 
   let raf = null;
