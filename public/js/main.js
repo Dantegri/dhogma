@@ -69,7 +69,7 @@ if (form) {
   });
 }
 
-// ── Intersection Observer — fade-in + proceso timeline ──
+// ── Intersection Observer — fade-in ──
 const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
@@ -79,7 +79,22 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.12 }
 );
 
-document.querySelectorAll('.fade-in, .ptimeline-fase').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── Proceso timeline: expand al scrollear hacia cada fase ──
+const phaseObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        phaseObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1, rootMargin: '0px 0px -35% 0px' }
+);
+
+document.querySelectorAll('.ptimeline-fase').forEach(el => phaseObserver.observe(el));
