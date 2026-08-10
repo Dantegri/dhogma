@@ -89,13 +89,13 @@ section { padding: 6rem 0; }
 }
 
 .logo-img {
-  height: 44px;
+  height: 54px;
   width: auto;
   object-fit: contain;
 }
 
 @media (max-width: 480px) {
-  .logo-img { height: 36px; }
+  .logo-img { height: 44px; }
 }
 
 .nav-links {
