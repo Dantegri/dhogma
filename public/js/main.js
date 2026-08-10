@@ -125,13 +125,15 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   inner.style.position = 'sticky';
   inner.style.top = '5rem';
 
-  // minHeight incluye la altura del contenido para que el scroll no se agote antes
+  // minHeight = espacio lógico de scroll + un viewport completo de buffer
+  // Esto garantiza que el último paso tenga ~1.5 unidades de hold antes de que
+  // la sección suelte, evitando que se "brinque" al scrollear rápido
   const totalUnits = data.reduce((s, p) => s + p.steps.length, 0);
-  section.style.minHeight = (inner.offsetHeight + INTRO_PX + totalUnits * UNIT_PX) + 'px';
+  section.style.minHeight = (INTRO_PX + totalUnits * UNIT_PX + window.innerHeight) + 'px';
 
   function updateActive() {
-    // scrollY relativo al inicio de la sección (más estable que getBoundingClientRect)
-    const scrolled = window.scrollY - section.offsetTop - INTRO_PX;
+    // getBoundingClientRect es fiable en cualquier layout (no depende de offsetParent)
+    const scrolled = Math.max(0, -(section.getBoundingClientRect().top) - INTRO_PX);
 
     // Mapea el scroll a fase activa y paso activo
     let remaining = Math.max(0, scrolled);
