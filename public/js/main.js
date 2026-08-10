@@ -84,17 +84,25 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ── Proceso timeline: expand al scrollear hacia cada fase ──
-const phaseObserver = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        phaseObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.1, rootMargin: '0px 0px -35% 0px' }
-);
+// ── Proceso timeline: carousel por scroll ──
+(function () {
+  const phases = document.querySelectorAll('.ptimeline-fase');
+  if (!phases.length) return;
 
-document.querySelectorAll('.ptimeline-fase').forEach(el => phaseObserver.observe(el));
+  function updateActive() {
+    const trigger = window.innerHeight * 0.42;
+    let current = phases[0];
+    phases.forEach(phase => {
+      if (phase.getBoundingClientRect().top <= trigger) current = phase;
+    });
+    phases.forEach(phase => phase.classList.toggle('active', phase === current));
+  }
+
+  let raf = null;
+  window.addEventListener('scroll', () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(updateActive);
+  }, { passive: true });
+
+  updateActive();
+})();
