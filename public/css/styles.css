@@ -759,22 +759,25 @@ section { padding: 6rem 0; }
 }
 
 .ptimeline-fase.active .ptimeline-steps {
-  max-height: 900px;
+  max-height: 420px;
 }
 
+/* Steps: carousel — solo .step-active visible */
 .ptimeline-step {
+  display: none;
   padding: 0.9rem 1.1rem;
   border: 1px solid rgba(255,255,255,0.07);
   background: rgba(255,255,255,0.03);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.38s ease, transform 0.38s ease;
-  transition-delay: calc(0.18s + var(--i, 0) * 0.1s);
 }
 
-.ptimeline-fase.active .ptimeline-step {
-  opacity: 1;
-  transform: translateY(0);
+.ptimeline-step.step-active {
+  display: block;
+  animation: stepIn 0.28s ease forwards;
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 .ptimeline-step h4 {
@@ -792,9 +795,63 @@ section { padding: 6rem 0; }
   margin: 0;
 }
 
+/* Nav: flechas + dots dentro de cada fase */
+.ptimeline-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.pnav-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--white);
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.pnav-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.pnav-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.pnav-dots {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.pnav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.pnav-dot.active {
+  background: var(--red);
+  transform: scale(1.3);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .ptimeline-step { opacity: 1; transform: none; transition: none; }
+  .ptimeline-step { animation: none; }
   .ptimeline-steps { max-height: none; overflow: visible; }
+  .ptimeline-step { display: block; }
 }
 
 /* ============================================================
