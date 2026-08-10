@@ -345,6 +345,11 @@ section { padding: 6rem 0; }
    ============================================================ */
 #nosotros {
   background: var(--white);
+  padding-top: 3rem;
+}
+
+@media (max-width: 900px) {
+  #nosotros { padding-top: 1.5rem; }
 }
 
 .nosotros-grid {
@@ -662,129 +667,124 @@ section { padding: 6rem 0; }
   margin-bottom: 3rem;
 }
 
-.proceso-tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 1px solid rgba(245,244,240,0.1);
-  margin-bottom: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+/* ── Proceso: vertical scroll timeline ── */
+.ptimeline {
+  margin-top: 3rem;
 }
 
-.proceso-tabs::-webkit-scrollbar { display: none; }
+.ptimeline-fase {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0 1.75rem;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
 
-.ptab {
+.ptimeline-fase.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ptimeline-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2rem;
-  padding: 1rem 1.5rem;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: border-color 0.25s, background 0.25s;
-  white-space: nowrap;
-  flex-shrink: 0;
+  align-items: center;
 }
 
-.ptab:hover { background: rgba(245,244,240,0.04); }
-
-.ptab.active {
-  border-bottom-color: var(--red);
-  background: rgba(200,16,46,0.06);
-}
-
-.ptab-num {
-  font-family: var(--font-heading);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: var(--red);
-}
-
-.ptab-label {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(245,244,240,0.5);
-  transition: color 0.25s;
-}
-
-.ptab.active .ptab-label { color: var(--white); }
-
-.proceso-content {
-  min-height: 300px;
-  padding: 2.5rem 0;
-}
-
-.fase-panel {
-  display: none;
-}
-
-.fase-panel.active {
-  display: block;
-  animation: fadeSlideIn 0.4s ease;
-}
-
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.fase-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1px;
-  background: rgba(245,244,240,0.06);
-}
-
-.fase-step {
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-  background: var(--black);
-  padding: 2rem;
-  transition: background 0.2s;
-}
-
-.fase-step:hover { background: #161616; }
-
-.step-num {
-  width: 2.2rem;
-  height: 2.2rem;
-  background: var(--red);
-  color: var(--white);
+.ptimeline-dot {
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  font-weight: 700;
   flex-shrink: 0;
+  background: transparent;
+  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
-.fase-step.featured-step .step-num {
-  background: var(--white);
-  color: var(--red);
-  width: 2.6rem;
-  height: 2.6rem;
-  font-size: 0.8rem;
+.ptimeline-fase.visible .ptimeline-dot {
+  background: var(--red);
+  border-color: var(--red);
 }
 
-.step-body h4 {
+.ptimeline-dot span {
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.5s ease;
+}
+
+.ptimeline-fase.visible .ptimeline-dot span {
+  color: var(--white);
+}
+
+.ptimeline-connector {
+  flex: 1;
+  width: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 0.5rem 0 0;
+  min-height: 2rem;
+}
+
+.ptimeline-body {
+  padding-bottom: 3rem;
+}
+
+.ptimeline-body h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
   font-weight: 700;
   color: var(--white);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.1rem;
+  padding-top: 0.4rem;
+  letter-spacing: 0.01em;
 }
 
-.step-body p {
-  font-size: 0.82rem;
-  color: rgba(245,244,240,0.5);
-  line-height: 1.7;
+.ptimeline-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ptimeline-step {
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.03);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(0.25s + var(--i, 0) * 0.1s);
+}
+
+.ptimeline-fase.visible .ptimeline-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ptimeline-step h4 {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.ptimeline-step p {
+  font-size: 0.79rem;
+  color: rgba(245,244,240,0.48);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ptimeline-fase, .ptimeline-step {
+    opacity: 1; transform: none; transition: none;
+  }
 }
 
 /* ============================================================

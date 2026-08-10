@@ -69,21 +69,7 @@ if (form) {
   });
 }
 
-// ── Proceso tabs ──
-const tabs   = document.querySelectorAll('.ptab');
-const panels = document.querySelectorAll('.fase-panel');
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const fase = tab.dataset.fase;
-    tabs.forEach(t => t.classList.remove('active'));
-    panels.forEach(p => p.classList.remove('active'));
-    tab.classList.add('active');
-    document.querySelector(`.fase-panel[data-fase="${fase}"]`).classList.add('active');
-  });
-});
-
-// ── Intersection Observer — fade-in on scroll ──
+// ── Intersection Observer — fade-in + proceso timeline ──
 const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
@@ -93,7 +79,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.12 }
+  { threshold: 0.15 }
 );
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in, .ptimeline-fase').forEach(el => observer.observe(el));
