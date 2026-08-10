@@ -84,76 +84,66 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// ── Proceso steps: carrusel de conceptos dentro de cada fase ──
+// ── Proceso: scroll carousel — fases + pasos ──
 (function () {
-  document.querySelectorAll('.ptimeline-steps').forEach(container => {
-    const steps = Array.from(container.querySelectorAll('.ptimeline-step'));
+  const phases = Array.from(document.querySelectorAll('.ptimeline-fase'));
+  if (!phases.length) return;
+
+  const STEP_PX = 180; // px de scroll por paso dentro de una fase
+
+  // Init: puntos indicadores y espacio de scroll por fase
+  phases.forEach(fase => {
+    const steps = Array.from(fase.querySelectorAll('.ptimeline-step'));
     if (!steps.length) return;
 
-    // Activa siempre el primer paso
     steps[0].classList.add('step-active');
 
-    // Fases con un solo paso no necesitan nav
-    if (steps.length < 2) return;
+    if (steps.length > 1) {
+      // Dots como indicadores (sin botones)
+      const nav = document.createElement('div');
+      nav.className = 'ptimeline-nav';
+      const dotsEl = document.createElement('div');
+      dotsEl.className = 'pnav-dots';
+      steps.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'pnav-dot' + (i === 0 ? ' active' : '');
+        dotsEl.appendChild(dot);
+      });
+      nav.appendChild(dotsEl);
+      fase.querySelector('.ptimeline-steps').appendChild(nav);
 
-    let current = 0;
-
-    // Genera nav: ← dots →
-    const nav = document.createElement('div');
-    nav.className = 'ptimeline-nav';
-
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'pnav-btn pnav-prev';
-    prevBtn.setAttribute('aria-label', 'Anterior');
-    prevBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>`;
-    prevBtn.disabled = true;
-
-    const dotsEl = document.createElement('div');
-    dotsEl.className = 'pnav-dots';
-    steps.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.className = 'pnav-dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => goTo(i));
-      dotsEl.appendChild(dot);
-    });
-
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'pnav-btn pnav-next';
-    nextBtn.setAttribute('aria-label', 'Siguiente');
-    nextBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>`;
-
-    nav.appendChild(prevBtn);
-    nav.appendChild(dotsEl);
-    nav.appendChild(nextBtn);
-    container.appendChild(nav);
-
-    function goTo(index) {
-      steps[current].classList.remove('step-active');
-      dotsEl.children[current].classList.remove('active');
-      current = index;
-      steps[current].classList.add('step-active');
-      dotsEl.children[current].classList.add('active');
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === steps.length - 1;
+      // Expande la fase en el DOM para tener room de scroll entre pasos
+      fase.style.paddingBottom = (steps.length * STEP_PX) + 'px';
     }
-
-    prevBtn.addEventListener('click', () => goTo(current - 1));
-    nextBtn.addEventListener('click', () => goTo(current + 1));
   });
-})();
-
-// ── Proceso timeline: carousel por scroll ──
-(function () {
-  const phases = document.querySelectorAll('.ptimeline-fase');
-  if (!phases.length) return;
 
   function updateActive() {
     const trigger = window.innerHeight * 0.42;
-    let current = phases[0];
-    phases.forEach(phase => {
-      if (phase.getBoundingClientRect().top <= trigger) current = phase;
+
+    // Determina cuál fase es la activa
+    let activeIndex = 0;
+    phases.forEach((fase, i) => {
+      if (fase.getBoundingClientRect().top <= trigger) activeIndex = i;
     });
-    phases.forEach(phase => phase.classList.toggle('active', phase === current));
+
+    phases.forEach((fase, i) => fase.classList.toggle('active', i === activeIndex));
+
+    // Calcula el paso activo dentro de la fase activa
+    const activeFase = phases[activeIndex];
+    const steps = Array.from(activeFase.querySelectorAll('.ptimeline-step'));
+
+    if (steps.length > 1) {
+      const scrolledIn = trigger - activeFase.getBoundingClientRect().top;
+      const stepIndex = Math.min(
+        Math.max(0, Math.floor(scrolledIn / STEP_PX)),
+        steps.length - 1
+      );
+
+      steps.forEach((step, si) => step.classList.toggle('step-active', si === stepIndex));
+
+      const dots = activeFase.querySelectorAll('.pnav-dot');
+      dots.forEach((dot, di) => dot.classList.toggle('active', di === stepIndex));
+    }
   }
 
   let raf = null;
