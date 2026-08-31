@@ -84,6 +84,65 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+// ── Portfolio modal ──
+(function () {
+  const modal   = document.getElementById('pf-modal');
+  const grid    = document.getElementById('pf-grid');
+  const closeBtn = modal && modal.querySelector('.pf-close');
+  const backdrop = modal && modal.querySelector('.pf-backdrop');
+  if (!modal || !grid) return;
+
+  let loaded = false;
+
+  function openModal() {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (!loaded) { loadProjects(); loaded = true; }
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  // Abre con cualquier tarjeta de proyecto
+  document.querySelectorAll('.proyecto-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', openModal);
+  });
+
+  closeBtn && closeBtn.addEventListener('click', closeModal);
+  backdrop && backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  function loadProjects() {
+    fetch('assets/portfolio-data.json')
+      .then(r => r.json())
+      .then(projects => {
+        grid.innerHTML = '';
+        projects.forEach(p => {
+          const fig = document.createElement('figure');
+          fig.className = 'pf-item';
+          const nivTag = p.niveles && p.niveles !== '—'
+            ? `<span class="pf-tag">${p.niveles}</span>` : '';
+          const conTag = p.construccion && p.construccion !== '—'
+            ? `<span class="pf-tag red">${p.construccion}</span>` : '';
+          fig.innerHTML = `
+            <img src="${p.img}" alt="${p.titulo}" loading="lazy" />
+            <figcaption>
+              <strong>${p.titulo}</strong>
+              ${p.ubicacion ? `<span class="pf-loc">${p.ubicacion}</span>` : ''}
+              <div class="pf-tags">${conTag}${nivTag}</div>
+            </figcaption>`;
+          grid.appendChild(fig);
+        });
+      })
+      .catch(() => {
+        grid.innerHTML = '<p style="color:rgba(255,255,255,0.4);padding:2rem">Error cargando el portafolio.</p>';
+      });
+  }
+})();
+
 // ── Proceso: sticky scroll — fases + pasos sin padding visual ──
 (function () {
   const section = document.getElementById('proceso');

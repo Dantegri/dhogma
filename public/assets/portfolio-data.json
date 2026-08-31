@@ -1,0 +1,242 @@
+[
+  {
+    "img": "assets/images/portfolio/p01.jpg",
+    "titulo": "Cumbres Elite 8vo",
+    "ubicacion": "Cerezos 148",
+    "terreno": "160m2",
+    "construccion": "230 m²",
+    "niveles": "2 Niveles"
+  },
+  {
+    "img": "assets/images/portfolio/p02.jpg",
+    "titulo": "Cumbres Elite 8vo",
+    "ubicacion": "Cerezos 150",
+    "terreno": "160m2",
+    "construccion": "230 m²",
+    "niveles": "2 Niveles"
+  },
+  {
+    "img": "assets/images/portfolio/p03.jpg",
+    "titulo": "Cumbres Elite 8vo",
+    "ubicacion": "Cerezos 152",
+    "terreno": "160m2",
+    "construccion": "230 m²",
+    "niveles": "2 Niveles"
+  },
+  {
+    "img": "assets/images/portfolio/p04.jpg",
+    "titulo": "Cumbres Elite 7mo",
+    "ubicacion": "Rocosas 250",
+    "terreno": "174.5 m2",
+    "construccion": "297 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p05.jpg",
+    "titulo": "Cumbres Elite 7mo",
+    "ubicacion": "Rocosas 252",
+    "terreno": "174.5 m2",
+    "construccion": "297 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p08.jpg",
+    "titulo": "Cumbres Elite 8vo",
+    "ubicacion": "Cenizos 135",
+    "terreno": "160 m2",
+    "construccion": "305 m²",
+    "niveles": "3 Niveles con Sotano"
+  },
+  {
+    "img": "assets/images/portfolio/p09.jpg",
+    "titulo": "Cumbres Elite 8vo",
+    "ubicacion": "Cenizos 117",
+    "terreno": "160 m2",
+    "construccion": "305 m²",
+    "niveles": "3 Niveles con Sotano"
+  },
+  {
+    "img": "assets/images/portfolio/p10.jpg",
+    "titulo": "Cumbres Elite 8vo",
+    "ubicacion": "Cenizos 206",
+    "terreno": "160 m2",
+    "construccion": "213 m²",
+    "niveles": "2 Niveles"
+  },
+  {
+    "img": "assets/images/portfolio/p11.jpg",
+    "titulo": "Cumbres Elite 9no",
+    "ubicacion": "Yuca 104",
+    "terreno": "160 m2",
+    "construccion": "230 m²",
+    "niveles": "2 Niveles"
+  },
+  {
+    "img": "assets/images/portfolio/p12.jpg",
+    "titulo": "Cumbres Elite 10mo",
+    "ubicacion": "Rondoy 125",
+    "terreno": "180 m2",
+    "construccion": "318 m²",
+    "niveles": "3 Niveles con Sotano"
+  },
+  {
+    "img": "assets/images/portfolio/p13.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Encino 128",
+    "terreno": "212 m2",
+    "construccion": "385 m²",
+    "niveles": "3 Niveles + acceso"
+  },
+  {
+    "img": "assets/images/portfolio/p14.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Encino",
+    "terreno": "144 m2",
+    "construccion": "305 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p15.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Encino",
+    "terreno": "144 m2",
+    "construccion": "305 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p16.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Encino",
+    "terreno": "144 m2",
+    "construccion": "305 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p17.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Encino",
+    "terreno": "144 m2",
+    "construccion": "310 m²",
+    "niveles": "3 Niveles con Sotano"
+  },
+  {
+    "img": "assets/images/portfolio/p18.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Encino",
+    "terreno": "144 m2",
+    "construccion": "310 m²",
+    "niveles": "3 Niveles con Sotano"
+  },
+  {
+    "img": "assets/images/portfolio/p19.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Encino",
+    "terreno": "144 m2",
+    "construccion": "310 m²",
+    "niveles": "3 Niveles con Sotano"
+  },
+  {
+    "img": "assets/images/portfolio/p20.jpg",
+    "titulo": "Privada Vesubio",
+    "ubicacion": "Sicomoro 114",
+    "terreno": "144 m2",
+    "construccion": "305 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p21.jpg",
+    "titulo": "Privada Vesubio",
+    "ubicacion": "Sicomoro 116",
+    "terreno": "144 m2",
+    "construccion": "305 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p22.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Fresnos 100",
+    "terreno": "151 m2",
+    "construccion": "328 m²",
+    "niveles": "3 Niveles Sotano + acceso"
+  },
+  {
+    "img": "assets/images/portfolio/p23.jpg",
+    "titulo": "Privada Olimpo",
+    "ubicacion": "Fresnos 102",
+    "terreno": "151 m2",
+    "construccion": "328 m²",
+    "niveles": "4 Niveles Sotano + acceso"
+  },
+  {
+    "img": "assets/images/portfolio/p24.jpg",
+    "titulo": "Cumbres Elite Privada 2",
+    "ubicacion": "Calandria 105",
+    "terreno": "—",
+    "construccion": "300 m²",
+    "niveles": "—"
+  },
+  {
+    "img": "assets/images/portfolio/p25.jpg",
+    "titulo": "Cumbres Elite Privada 2",
+    "ubicacion": "Calandria 107",
+    "terreno": "162.6 m2",
+    "construccion": "325 m²",
+    "niveles": "3 Niveles con Sotano"
+  },
+  {
+    "img": "assets/images/portfolio/p26.jpg",
+    "titulo": "Cumbres Elite Privada 2",
+    "ubicacion": "Calandria 113",
+    "terreno": "—",
+    "construccion": "300 m²",
+    "niveles": "—"
+  },
+  {
+    "img": "assets/images/portfolio/p27.jpg",
+    "titulo": "Cumbres Elite Privada 2",
+    "ubicacion": "Calandria 115",
+    "terreno": "162.6 m2",
+    "construccion": "308 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p28.jpg",
+    "titulo": "Cumbres Elite Privada 2",
+    "ubicacion": "Calandria 117",
+    "terreno": "—",
+    "construccion": "300 m²",
+    "niveles": "—"
+  },
+  {
+    "img": "assets/images/portfolio/p29.jpg",
+    "titulo": "Cumbres Elite Privada 2",
+    "ubicacion": "Calandria 119",
+    "terreno": "162.6 m2",
+    "construccion": "308 m²",
+    "niveles": "3 Niveles con terraza"
+  },
+  {
+    "img": "assets/images/portfolio/p30.jpg",
+    "titulo": "Cumbres Elite Privada 1",
+    "ubicacion": "Agapantos 141",
+    "terreno": "162 m2",
+    "construccion": "255 m²",
+    "niveles": "2 Niveles"
+  },
+  {
+    "img": "assets/images/portfolio/p31.jpg",
+    "titulo": "Cumbres Elite Privada 1",
+    "ubicacion": "Agapantos 143",
+    "terreno": "162 m2",
+    "construccion": "255 m²",
+    "niveles": "2 Niveles"
+  },
+  {
+    "img": "assets/images/portfolio/p32.jpg",
+    "titulo": "Cumbres Elite Privada 1",
+    "ubicacion": "Agapantos 145",
+    "terreno": "162 m2",
+    "construccion": "255 m²",
+    "niveles": "2 Niveles"
+  }
+]
