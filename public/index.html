@@ -172,116 +172,157 @@
       <span class="section-label">Así construimos tu proyecto</span>
       <h2>Te acompañamos en cada etapa, desde el análisis del terreno hasta la <em style="font-style:normal; color:var(--red)">entrega de tu hogar.</em></h2>
 
-      <div class="ptimeline">
-
-        <div class="ptimeline-fase" data-fase="1">
-          <div class="ptimeline-left">
-            <div class="ptimeline-dot"><span>01</span></div>
-            <div class="ptimeline-connector"></div>
-          </div>
-          <div class="ptimeline-body">
+      <!-- Vista panorámica: 5 fases, riel horizontal -->
+      <div class="proceso-rail-wrap fade-in">
+        <div class="proceso-rail-hint">
+          <span>◂ desliza para ver las 5 fases ▸</span>
+          <span>12 etapas en total</span>
+        </div>
+        <div class="proceso-rail" id="proceso-rail">
+          <a href="#fase-1" class="prail-card">
+            <span class="prail-num">01</span>
             <h3>Estudio del terreno</h3>
-            <div class="ptimeline-steps">
-              <div class="ptimeline-step" style="--i:0">
-                <h4>Deslinde de terreno</h4>
-                <p>Definimos con precisión los límites de tu propiedad para construir con total certeza y seguridad jurídica.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:1">
-                <h4>Levantamiento topográfico</h4>
-                <p>Obtenemos las medidas y características reales del terreno como base para un proyecto exitoso.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:2">
-                <h4>Curvas de nivel</h4>
-                <p>Analizamos la pendiente y el relieve del terreno para optimizar el diseño, la construcción y los costos.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:3">
-                <h4>Mecánica de suelo</h4>
-                <p>Evaluamos la capacidad del terreno para garantizar una cimentación segura, eficiente y duradera.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ptimeline-fase" data-fase="2">
-          <div class="ptimeline-left">
-            <div class="ptimeline-dot"><span>02</span></div>
-            <div class="ptimeline-connector"></div>
-          </div>
-          <div class="ptimeline-body">
+            <span class="prail-count">4 etapas</span>
+          </a>
+          <a href="#fase-2" class="prail-card">
+            <span class="prail-num">02</span>
             <h3>Diseño</h3>
-            <div class="ptimeline-steps">
-              <div class="ptimeline-step" style="--i:0">
-                <h4>Revisión de reglamento interno</h4>
-                <p>Verificamos las normas del fraccionamiento o desarrollo para que tu proyecto cumpla desde el primer día.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:1">
-                <h4>Anteproyecto</h4>
-                <p>Transformamos tus ideas en una propuesta arquitectónica funcional, estética y adaptada a tus necesidades.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:2">
-                <h4>Cálculo estructural</h4>
-                <p>Diseñamos la estructura de tu proyecto para ofrecer seguridad, estabilidad y cumplimiento normativo.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:3">
-                <h4>Proyecto ejecutivo</h4>
-                <p>Desarrollamos todos los planos y especificaciones técnicas necesarios para construir con precisión.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ptimeline-fase" data-fase="3">
-          <div class="ptimeline-left">
-            <div class="ptimeline-dot"><span>03</span></div>
-            <div class="ptimeline-connector"></div>
-          </div>
-          <div class="ptimeline-body">
+            <span class="prail-count">4 etapas</span>
+          </a>
+          <a href="#fase-3" class="prail-card">
+            <span class="prail-num">03</span>
             <h3>Gestión</h3>
-            <div class="ptimeline-steps">
-              <div class="ptimeline-step" style="--i:0">
-                <h4>Licencia de construcción</h4>
-                <p>Gestionamos los permisos necesarios para que tu obra inicie de forma legal y sin contratiempos.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ptimeline-fase" data-fase="4">
-          <div class="ptimeline-left">
-            <div class="ptimeline-dot"><span>04</span></div>
-            <div class="ptimeline-connector"></div>
-          </div>
-          <div class="ptimeline-body">
+            <span class="prail-count">1 etapa</span>
+          </a>
+          <a href="#fase-4" class="prail-card">
+            <span class="prail-num">04</span>
             <h3>Planeación</h3>
-            <div class="ptimeline-steps">
-              <div class="ptimeline-step" style="--i:0">
-                <h4>Catálogo de conceptos</h4>
-                <p>Elaboramos un presupuesto detallado con cada concepto de obra para brindarte claridad y control financiero.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:1">
-                <h4>Programa de inversión y avance</h4>
-                <p>Planificamos la inversión y el calendario de ejecución para mantener el control del presupuesto y los tiempos de construcción.</p>
-              </div>
-            </div>
+            <span class="prail-count">2 etapas</span>
+          </a>
+          <a href="#fase-5" class="prail-card">
+            <span class="prail-num">05</span>
+            <h3>Construcción</h3>
+            <span class="prail-count">2 etapas</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Detalle: acordeón con las 12 etapas, agrupadas por fase -->
+      <div class="proceso-acc fade-in" id="proceso-acc">
+
+        <div class="pacc-fase" id="fase-1">
+          <span class="pacc-fase-label"><span>01</span> Estudio del terreno</span>
+
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Deslinde de terreno</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Definimos con precisión los límites de tu propiedad para construir con total certeza y seguridad jurídica.</p></div>
+          </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Levantamiento topográfico</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Obtenemos las medidas y características reales del terreno como base para un proyecto exitoso.</p></div>
+          </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Curvas de nivel</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Analizamos la pendiente y el relieve del terreno para optimizar el diseño, la construcción y los costos.</p></div>
+          </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Mecánica de suelo</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Evaluamos la capacidad del terreno para garantizar una cimentación segura, eficiente y duradera.</p></div>
           </div>
         </div>
 
-        <div class="ptimeline-fase" data-fase="5">
-          <div class="ptimeline-left">
-            <div class="ptimeline-dot"><span>05</span></div>
+        <div class="pacc-fase" id="fase-2">
+          <span class="pacc-fase-label"><span>02</span> Diseño</span>
+
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Revisión de reglamento interno</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Verificamos las normas del fraccionamiento o desarrollo para que tu proyecto cumpla desde el primer día.</p></div>
           </div>
-          <div class="ptimeline-body">
-            <h3>Construcción</h3>
-            <div class="ptimeline-steps">
-              <div class="ptimeline-step" style="--i:0">
-                <h4>Inicio de obra</h4>
-                <p>Ejecutamos tu proyecto con supervisión profesional, calidad y cumplimiento en cada etapa.</p>
-              </div>
-              <div class="ptimeline-step" style="--i:1">
-                <h4>Entrega de tu hogar</h4>
-                <p>Tu proyecto terminado, listo para disfrutar y construir momentos inolvidables.</p>
-              </div>
-            </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Anteproyecto</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Transformamos tus ideas en una propuesta arquitectónica funcional, estética y adaptada a tus necesidades.</p></div>
+          </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Cálculo estructural</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Diseñamos la estructura de tu proyecto para ofrecer seguridad, estabilidad y cumplimiento normativo.</p></div>
+          </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Proyecto ejecutivo</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Desarrollamos todos los planos y especificaciones técnicas necesarios para construir con precisión.</p></div>
+          </div>
+        </div>
+
+        <div class="pacc-fase" id="fase-3">
+          <span class="pacc-fase-label"><span>03</span> Gestión</span>
+
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Licencia de construcción</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Gestionamos los permisos necesarios para que tu obra inicie de forma legal y sin contratiempos.</p></div>
+          </div>
+        </div>
+
+        <div class="pacc-fase" id="fase-4">
+          <span class="pacc-fase-label"><span>04</span> Planeación</span>
+
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Catálogo de conceptos</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Elaboramos un presupuesto detallado con cada concepto de obra para brindarte claridad y control financiero.</p></div>
+          </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Programa de inversión y avance</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Planificamos la inversión y el calendario de ejecución para mantener el control del presupuesto y los tiempos de construcción.</p></div>
+          </div>
+        </div>
+
+        <div class="pacc-fase" id="fase-5">
+          <span class="pacc-fase-label"><span>05</span> Construcción</span>
+
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Inicio de obra</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Ejecutamos tu proyecto con supervisión profesional, calidad y cumplimiento en cada etapa.</p></div>
+          </div>
+          <div class="pacc-item">
+            <button class="pacc-trigger" aria-expanded="false">
+              <span class="pacc-title">Entrega de tu hogar</span>
+              <span class="pacc-chev"></span>
+            </button>
+            <div class="pacc-panel"><p>Tu proyecto terminado, listo para disfrutar y construir momentos inolvidables.</p></div>
           </div>
         </div>
 

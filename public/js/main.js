@@ -31,7 +31,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (!target) return;
     e.preventDefault();
     const offset = navbar ? navbar.offsetHeight : 0;
-    window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
   });
 });
 
@@ -143,89 +144,34 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   }
 })();
 
-// ── Proceso: sticky scroll — fases + pasos sin padding visual ──
+// ── Proceso: acordeón de 12 etapas ──
 (function () {
-  const section = document.getElementById('proceso');
-  if (!section) return;
+  const acc = document.getElementById('proceso-acc');
+  if (!acc) return;
 
-  const inner = section.querySelector('.container');
-  const phases = Array.from(section.querySelectorAll('.ptimeline-fase'));
-  if (!phases.length) return;
+  const items = Array.from(acc.querySelectorAll('.pacc-item'));
 
-  const UNIT_PX  = 220;  // px de scroll por unidad (fase o paso)
-  const INTRO_PX = 320;  // scroll inicial antes de activar la primera fase
+  items.forEach(item => {
+    const trigger = item.querySelector('.pacc-trigger');
+    const panel   = item.querySelector('.pacc-panel');
 
-  // Datos de cada fase con sus pasos
-  const data = phases.map(fase => ({
-    el: fase,
-    steps: Array.from(fase.querySelectorAll('.ptimeline-step'))
-  }));
-
-  // Init dots + primer paso activo
-  data.forEach(p => {
-    if (!p.steps.length) return;
-    p.steps[0].classList.add('step-active');
-    if (p.steps.length < 2) return;
-
-    const nav = document.createElement('div');
-    nav.className = 'ptimeline-nav';
-    const dotsEl = document.createElement('div');
-    dotsEl.className = 'pnav-dots';
-    p.steps.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.className = 'pnav-dot' + (i === 0 ? ' active' : '');
-      dotsEl.appendChild(dot);
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+      panel.style.height = isOpen ? '0px' : panel.scrollHeight + 'px';
     });
-    nav.appendChild(dotsEl);
-    p.el.querySelector('.ptimeline-steps').appendChild(nav);
   });
 
-  // Hace el contenido sticky — sin gaps visuales
-  inner.style.position = 'sticky';
-  inner.style.top = '5rem';
+  // Abre la primera etapa de cada fase por defecto
+  document.querySelectorAll('.pacc-fase').forEach(fase => {
+    const first = fase.querySelector('.pacc-trigger');
+    if (first) first.click();
+  });
 
-  // minHeight = espacio lógico de scroll + un viewport completo de buffer
-  // Esto garantiza que el último paso tenga ~1.5 unidades de hold antes de que
-  // la sección suelte, evitando que se "brinque" al scrollear rápido
-  const totalUnits = data.reduce((s, p) => s + p.steps.length, 0);
-  section.style.minHeight = (INTRO_PX + totalUnits * UNIT_PX + window.innerHeight) + 'px';
-
-  function updateActive() {
-    // getBoundingClientRect es fiable en cualquier layout (no depende de offsetParent)
-    const scrolled = Math.max(0, -(section.getBoundingClientRect().top) - INTRO_PX);
-
-    // Mapea el scroll a fase activa y paso activo
-    let remaining = Math.max(0, scrolled);
-    let activePhase = 0;
-    let activeStep  = 0;
-
-    for (let pi = 0; pi < data.length; pi++) {
-      const budget = data[pi].steps.length * UNIT_PX;
-      if (remaining < budget || pi === data.length - 1) {
-        activePhase = pi;
-        activeStep  = Math.min(
-          Math.floor(remaining / UNIT_PX),
-          data[pi].steps.length - 1
-        );
-        break;
-      }
-      remaining -= budget;
-    }
-
-    data.forEach((p, pi) => {
-      const on = pi === activePhase;
-      p.el.classList.toggle('active', on);
-      if (!on || p.steps.length < 2) return;
-      p.steps.forEach((s, si) => s.classList.toggle('step-active', si === activeStep));
-      p.el.querySelectorAll('.pnav-dot').forEach((d, di) => d.classList.toggle('active', di === activeStep));
-    });
+  // Si se llega por ancla desde el riel, abre esa fase y ajusta scroll
+  if (location.hash.startsWith('#fase-')) {
+    const target = document.querySelector(location.hash);
+    if (target) target.scrollIntoView({ block: 'start' });
   }
-
-  let raf = null;
-  window.addEventListener('scroll', () => {
-    if (raf) cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(updateActive);
-  }, { passive: true });
-
-  updateActive();
 })();
