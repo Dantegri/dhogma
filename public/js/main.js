@@ -144,48 +144,22 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   }
 })();
 
-// ── Proceso: acordeón de 12 etapas ──
-(function () {
-  const acc = document.getElementById('proceso-acc');
-  if (!acc) return;
-
-  const items = Array.from(acc.querySelectorAll('.pacc-item'));
-
-  items.forEach(item => {
-    const trigger = item.querySelector('.pacc-trigger');
-    const panel   = item.querySelector('.pacc-panel');
-
-    trigger.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      item.classList.toggle('open', !isOpen);
-      trigger.setAttribute('aria-expanded', String(!isOpen));
-      panel.style.height = isOpen ? '0px' : panel.scrollHeight + 'px';
-    });
-  });
-
-  // Abre la primera etapa de cada fase por defecto
-  document.querySelectorAll('.pacc-fase').forEach(fase => {
-    const first = fase.querySelector('.pacc-trigger');
-    if (first) first.click();
-  });
-
-  // Si se llega por ancla desde el riel, abre esa fase y ajusta scroll
-  if (location.hash.startsWith('#fase-')) {
-    const target = document.querySelector(location.hash);
-    if (target) target.scrollIntoView({ block: 'start' });
-  }
-})();
-
 // ── Proceso: figura de fase activa — se actualiza sola al hacer scroll ──
 (function () {
   const phaseWrap = document.querySelector('.proceso-phase-wrap');
   const fases = Array.from(document.querySelectorAll('.pacc-fase'));
   if (!phaseWrap || !fases.length) return;
 
-  const numEl   = document.getElementById('pphase-num');
-  const nameEl  = document.getElementById('pphase-name');
-  const countEl = document.getElementById('pphase-count');
-  const dots    = Array.from(document.querySelectorAll('.pphase-dot'));
+  const numEl  = document.getElementById('pphase-num');
+  const nameEl = document.getElementById('pphase-name');
+  const listEl = document.getElementById('pphase-list');
+  const dots   = Array.from(document.querySelectorAll('.pphase-dot'));
+
+  function renderList(fase) {
+    const titles = Array.from(fase.querySelectorAll('.sr-only li')).map(li => li.textContent);
+    listEl.innerHTML = titles.map((t, i) => `<li style="--i:${i}">${t}</li>`).join('');
+  }
+  renderList(fases[0]);
 
   // Saltar a una fase al tocar su punto — sustituye el scroll horizontal
   dots.forEach(dot => {
@@ -208,7 +182,18 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   // Se calcula en cada scroll (no por bandas de intersección) para no saltarse
   // fases cortas como "Gestión", que solo tiene una etapa.
   const TRIGGER_LINE = 140; // px desde arriba
-  let activeFase = null;
+  let activeFase = fases[0];
+  let switchTimer = null;
+
+  function applyFase(current, index) {
+    numEl.textContent  = current.dataset.num;
+    nameEl.textContent = current.dataset.name;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+      dot.setAttribute('aria-selected', String(i === index));
+    });
+    renderList(current);
+  }
 
   function updateActiveFase() {
     let current = fases[0];
@@ -219,13 +204,13 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     if (current === activeFase) return;
     activeFase = current;
 
-    numEl.textContent   = current.dataset.num;
-    nameEl.textContent  = current.dataset.name;
-    countEl.textContent = current.dataset.count;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-      dot.setAttribute('aria-selected', String(i === index));
-    });
+    // La lista sale con la animación y, cuando termina, entra la de la siguiente fase
+    clearTimeout(switchTimer);
+    listEl.classList.add('is-switching');
+    switchTimer = setTimeout(() => {
+      applyFase(current, index);
+      listEl.classList.remove('is-switching');
+    }, 200);
   }
 
   let raf = null;
