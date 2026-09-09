@@ -579,11 +579,14 @@ section { padding: 6rem 0; }
 
 .proyectos-header a:hover { gap: 0.75rem; }
 
+/* Grid más compacto: es un anticipo del portafolio, no el contenido final —
+   invita a dar clic para abrir la galería completa, no compite con ella */
 .proyectos-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: auto auto;
-  gap: 1rem;
+  gap: 0.75rem;
+  max-width: 720px;
 }
 
 .proyecto-card {
@@ -594,19 +597,20 @@ section { padding: 6rem 0; }
   cursor: pointer;
 }
 
-.proyecto-card:nth-child(1) { grid-column: span 7; grid-row: span 2; }
-.proyecto-card:nth-child(2) { grid-column: span 5; }
-.proyecto-card:nth-child(3) { grid-column: span 5; }
+/* 8/4 en vez de 7/5: con fotos 4:3, esta proporción deja que tanto la
+   tarjeta grande como las dos chicas muestren la fachada completa,
+   sin que object-fit:cover recorte los lados por forzar un marco casi
+   cuadrado en la tarjeta grande */
+.proyecto-card:nth-child(1) { grid-column: span 8; grid-row: span 2; }
+.proyecto-card:nth-child(2) { grid-column: span 4; }
+.proyecto-card:nth-child(3) { grid-column: span 4; }
 
 .proyecto-card img {
   width: 100%;
-  height: 100%;
-  min-height: 220px;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
-
-.proyecto-card:nth-child(1) img { min-height: 480px; }
 
 .proyecto-card:hover img { transform: scale(1.04); }
 
@@ -618,19 +622,19 @@ section { padding: 6rem 0; }
   transition: opacity 0.3s;
   display: flex;
   align-items: flex-end;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .proyecto-card:hover .proyecto-overlay { opacity: 1; }
 
 .proyecto-info h4 {
   font-family: var(--font-heading);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--white);
 }
 
 .proyecto-info span {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   color: rgba(245,244,240,0.6);
   letter-spacing: 0.1em;
   text-transform: uppercase;
