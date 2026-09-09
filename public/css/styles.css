@@ -667,8 +667,8 @@ section { padding: 6rem 0; }
   margin-bottom: 3rem;
 }
 
-/* ── Proceso: riel de fases (vista panorámica) ── */
-.proceso-rail-wrap {
+/* ── Proceso: figura única de fase activa (sin scroll horizontal) ── */
+.proceso-phase-wrap {
   margin-top: 3rem;
   position: sticky;
   top: 4.5rem;
@@ -676,103 +676,80 @@ section { padding: 6rem 0; }
   background: var(--black);
   margin-left: -2rem;
   margin-right: -2rem;
-  padding: 0 2rem;
+  padding: 1.25rem 2rem;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.25s ease, padding-bottom 0.25s ease;
+  transition: border-color 0.25s ease;
 }
 
 /* Sobre fondo negro una box-shadow no se ve — el corte se marca con un borde real */
-.proceso-rail-wrap.is-stuck {
+.proceso-phase-wrap.is-stuck {
   border-bottom-color: rgba(255,255,255,0.12);
-  padding-bottom: 0.5rem;
 }
 
-.proceso-rail-hint {
+.pphase {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.pphase-num {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(245,244,240,0.4);
-  margin-bottom: 0.75rem;
-}
-
-.proceso-rail {
-  display: flex;
-  gap: 1px;
-  background: rgba(255,255,255,0.08);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: var(--red) rgba(255,255,255,0.08);
-}
-
-/* Chrome / Edge / Safari — Firefox usa scrollbar-width/color de arriba */
-.proceso-rail::-webkit-scrollbar { height: 3px; }
-.proceso-rail::-webkit-scrollbar-track { background: rgba(255,255,255,0.08); }
-.proceso-rail::-webkit-scrollbar-thumb { background: var(--red); }
-
-/* Barra de progreso: refuerza "vas en la fase X de 5", no lista infinita */
-.proceso-progress {
-  height: 2px;
-  background: rgba(255,255,255,0.08);
-  margin-top: 1px;
-}
-
-.proceso-progress-bar {
-  height: 100%;
-  width: 20%;
-  background: var(--red);
-  transition: width 0.3s ease;
-}
-
-.prail-card {
-  scroll-snap-align: start;
-  flex: 0 0 220px;
-  background: var(--black);
-  padding: 1.5rem 1.35rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  border-bottom: 2px solid transparent;
-  transition: background 0.25s ease, border-color 0.25s ease;
-}
-
-.prail-card:hover { background: rgba(255,255,255,0.04); }
-
-.prail-num {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 800;
   color: var(--red);
-  letter-spacing: 0.06em;
-  opacity: 0.7;
-  transition: opacity 0.25s ease;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
-.prail-card h3 {
-  font-size: 1.05rem;
-  color: rgba(245,244,240,0.6);
-  transition: color 0.25s ease;
+.pphase-body {
+  flex: 1;
+  min-width: 0;
 }
 
-.prail-count {
+.pphase-body h3 {
+  font-size: 1.3rem;
+  color: var(--white);
+}
+
+.pphase-count {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(245,244,240,0.4);
+  color: rgba(245,244,240,0.45);
 }
 
-/* Fase activa según scroll (sticky rail) */
-.prail-card.active {
-  background: rgba(200,16,46,0.08);
-  border-color: var(--red);
+/* Puntos: las 5 fases siempre completamente visibles, sin scroll */
+.pphase-dots {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
-.prail-card.active .prail-num { opacity: 1; }
-.prail-card.active h3 { color: var(--white); }
+.pphase-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pphase-dot:hover { background: rgba(255,255,255,0.35); }
+
+.pphase-dot.active {
+  background: var(--red);
+  transform: scale(1.4);
+}
+
+@media (max-width: 560px) {
+  .pphase { flex-wrap: wrap; }
+  .pphase-num { font-size: 2rem; }
+  .pphase-body h3 { font-size: 1.1rem; }
+  .pphase-dots { width: 100%; order: 1; justify-content: flex-start; }
+}
 
 /* ── Proceso: acordeón de 12 etapas ── */
 .proceso-acc {
@@ -786,20 +763,15 @@ section { padding: 6rem 0; }
 
 .pacc-fase:first-child { padding-top: 0; }
 
-.pacc-fase-label {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(245,244,240,0.4);
-  margin-bottom: 0.5rem;
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-
-.pacc-fase-label span { color: var(--red); }
 
 .pacc-item {
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -1601,5 +1573,5 @@ footer {
   .hero-content h1 { font-size: 2.2rem; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-outline { width: 100%; justify-content: center; }
-  .proceso-rail-wrap { margin-left: -1.25rem; margin-right: -1.25rem; padding: 0 1.25rem; }
+  .proceso-phase-wrap { margin-left: -1.25rem; margin-right: -1.25rem; padding: 1.25rem; }
 }

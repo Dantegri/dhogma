@@ -176,32 +176,39 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   }
 })();
 
-// ── Proceso: riel pegajoso — selecciona la fase visible al hacer scroll ──
+// ── Proceso: figura de fase activa — se actualiza sola al hacer scroll ──
 (function () {
-  const railWrap = document.querySelector('.proceso-rail-wrap');
+  const phaseWrap = document.querySelector('.proceso-phase-wrap');
   const fases = Array.from(document.querySelectorAll('.pacc-fase'));
-  if (!railWrap || !fases.length) return;
+  if (!phaseWrap || !fases.length) return;
 
-  const cards = {};
-  document.querySelectorAll('.prail-card').forEach(card => {
-    cards[card.getAttribute('href')] = card;
+  const numEl   = document.getElementById('pphase-num');
+  const nameEl  = document.getElementById('pphase-name');
+  const countEl = document.getElementById('pphase-count');
+  const dots    = Array.from(document.querySelectorAll('.pphase-dot'));
+
+  // Saltar a una fase al tocar su punto — sustituye el scroll horizontal
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = document.querySelector(dot.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   });
 
-  // Sombra/fondo del riel solo cuando ya está "pegado" arriba
+  // Borde de separación solo cuando la figura ya está "pegada" arriba
   const sentinel = document.createElement('div');
   sentinel.style.height = '1px';
-  railWrap.before(sentinel);
+  phaseWrap.before(sentinel);
   new IntersectionObserver(
-    ([entry]) => railWrap.classList.toggle('is-stuck', !entry.isIntersecting),
+    ([entry]) => phaseWrap.classList.toggle('is-stuck', !entry.isIntersecting),
     { rootMargin: '-73px 0px 0px 0px', threshold: 0 }
   ).observe(sentinel);
 
-  // Fase activa: la última cuyo inicio ya cruzó la línea justo debajo del riel.
+  // Fase activa: la última cuyo inicio ya cruzó la línea justo debajo de la figura.
   // Se calcula en cada scroll (no por bandas de intersección) para no saltarse
   // fases cortas como "Gestión", que solo tiene una etapa.
-  const TRIGGER_LINE = 140; // px desde arriba, debajo del riel pegajoso
-  const progressBar = document.getElementById('proceso-progress-bar');
-  let activeCard = null;
+  const TRIGGER_LINE = 140; // px desde arriba
+  let activeFase = null;
 
   function updateActiveFase() {
     let current = fases[0];
@@ -209,13 +216,16 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     fases.forEach((fase, i) => {
       if (fase.getBoundingClientRect().top <= TRIGGER_LINE) { current = fase; index = i; }
     });
-    const card = cards['#' + current.id];
-    if (card && card !== activeCard) {
-      if (activeCard) activeCard.classList.remove('active');
-      card.classList.add('active');
-      activeCard = card;
-    }
-    if (progressBar) progressBar.style.width = ((index + 1) / fases.length * 100) + '%';
+    if (current === activeFase) return;
+    activeFase = current;
+
+    numEl.textContent   = current.dataset.num;
+    nameEl.textContent  = current.dataset.name;
+    countEl.textContent = current.dataset.count;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+      dot.setAttribute('aria-selected', String(i === index));
+    });
   }
 
   let raf = null;

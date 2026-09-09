@@ -172,47 +172,29 @@
       <span class="section-label">Así construimos tu proyecto</span>
       <h2>Te acompañamos en cada etapa, desde el análisis del terreno hasta la <em style="font-style:normal; color:var(--red)">entrega de tu hogar.</em></h2>
 
-      <!-- Vista panorámica: 5 fases, riel horizontal -->
-      <div class="proceso-rail-wrap fade-in">
-        <div class="proceso-rail-hint">
-          <span>◂ desliza para ver las 5 fases ▸</span>
-          <span>13 etapas en total</span>
+      <!-- Fase activa: una sola figura, siempre completa a la vista, sin scroll horizontal -->
+      <div class="proceso-phase-wrap fade-in" id="proceso-phase-wrap">
+        <div class="pphase">
+          <span class="pphase-num" id="pphase-num">01</span>
+          <div class="pphase-body">
+            <h3 id="pphase-name">Estudio del terreno</h3>
+            <span class="pphase-count" id="pphase-count">4 etapas</span>
+          </div>
+          <div class="pphase-dots" id="pphase-dots" role="tablist" aria-label="Fases del proceso">
+            <button class="pphase-dot active" data-target="#fase-1" role="tab" aria-selected="true" aria-label="Fase 1, Estudio del terreno"></button>
+            <button class="pphase-dot" data-target="#fase-2" role="tab" aria-selected="false" aria-label="Fase 2, Diseño"></button>
+            <button class="pphase-dot" data-target="#fase-3" role="tab" aria-selected="false" aria-label="Fase 3, Gestión"></button>
+            <button class="pphase-dot" data-target="#fase-4" role="tab" aria-selected="false" aria-label="Fase 4, Planeación"></button>
+            <button class="pphase-dot" data-target="#fase-5" role="tab" aria-selected="false" aria-label="Fase 5, Construcción"></button>
+          </div>
         </div>
-        <div class="proceso-rail" id="proceso-rail">
-          <a href="#fase-1" class="prail-card">
-            <span class="prail-num">01</span>
-            <h3>Estudio del terreno</h3>
-            <span class="prail-count">4 etapas</span>
-          </a>
-          <a href="#fase-2" class="prail-card">
-            <span class="prail-num">02</span>
-            <h3>Diseño</h3>
-            <span class="prail-count">4 etapas</span>
-          </a>
-          <a href="#fase-3" class="prail-card">
-            <span class="prail-num">03</span>
-            <h3>Gestión</h3>
-            <span class="prail-count">1 etapa</span>
-          </a>
-          <a href="#fase-4" class="prail-card">
-            <span class="prail-num">04</span>
-            <h3>Planeación</h3>
-            <span class="prail-count">2 etapas</span>
-          </a>
-          <a href="#fase-5" class="prail-card">
-            <span class="prail-num">05</span>
-            <h3>Construcción</h3>
-            <span class="prail-count">2 etapas</span>
-          </a>
-        </div>
-        <div class="proceso-progress"><div class="proceso-progress-bar" id="proceso-progress-bar"></div></div>
       </div>
 
-      <!-- Detalle: acordeón con las 12 etapas, agrupadas por fase -->
+      <!-- Detalle: acordeón con las 13 etapas, agrupadas por fase -->
       <div class="proceso-acc fade-in" id="proceso-acc">
 
-        <div class="pacc-fase" id="fase-1">
-          <span class="pacc-fase-label"><span>01</span> Estudio del terreno</span>
+        <div class="pacc-fase" id="fase-1" data-num="01" data-name="Estudio del terreno" data-count="4 etapas">
+          <span class="sr-only">Fase 01 — Estudio del terreno</span>
 
           <div class="pacc-item">
             <button class="pacc-trigger" aria-expanded="false">
@@ -248,8 +230,8 @@
           </div>
         </div>
 
-        <div class="pacc-fase" id="fase-2">
-          <span class="pacc-fase-label"><span>02</span> Diseño</span>
+        <div class="pacc-fase" id="fase-2" data-num="02" data-name="Diseño" data-count="4 etapas">
+          <span class="sr-only">Fase 02 — Diseño</span>
 
           <div class="pacc-item">
             <button class="pacc-trigger" aria-expanded="false">
@@ -285,8 +267,8 @@
           </div>
         </div>
 
-        <div class="pacc-fase" id="fase-3">
-          <span class="pacc-fase-label"><span>03</span> Gestión</span>
+        <div class="pacc-fase" id="fase-3" data-num="03" data-name="Gestión" data-count="1 etapa">
+          <span class="sr-only">Fase 03 — Gestión</span>
 
           <div class="pacc-item">
             <button class="pacc-trigger" aria-expanded="false">
@@ -298,8 +280,8 @@
           </div>
         </div>
 
-        <div class="pacc-fase" id="fase-4">
-          <span class="pacc-fase-label"><span>04</span> Planeación</span>
+        <div class="pacc-fase" id="fase-4" data-num="04" data-name="Planeación" data-count="2 etapas">
+          <span class="sr-only">Fase 04 — Planeación</span>
 
           <div class="pacc-item">
             <button class="pacc-trigger" aria-expanded="false">
@@ -319,8 +301,8 @@
           </div>
         </div>
 
-        <div class="pacc-fase" id="fase-5">
-          <span class="pacc-fase-label"><span>05</span> Construcción</span>
+        <div class="pacc-fase" id="fase-5" data-num="05" data-name="Construcción" data-count="2 etapas">
+          <span class="sr-only">Fase 05 — Construcción</span>
 
           <div class="pacc-item">
             <button class="pacc-trigger" aria-expanded="false">
