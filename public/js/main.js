@@ -175,3 +175,52 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     if (target) target.scrollIntoView({ block: 'start' });
   }
 })();
+
+// ── Proceso: riel pegajoso — selecciona la fase visible al hacer scroll ──
+(function () {
+  const railWrap = document.querySelector('.proceso-rail-wrap');
+  const fases = Array.from(document.querySelectorAll('.pacc-fase'));
+  if (!railWrap || !fases.length) return;
+
+  const cards = {};
+  document.querySelectorAll('.prail-card').forEach(card => {
+    cards[card.getAttribute('href')] = card;
+  });
+
+  // Sombra/fondo del riel solo cuando ya está "pegado" arriba
+  const sentinel = document.createElement('div');
+  sentinel.style.height = '1px';
+  railWrap.before(sentinel);
+  new IntersectionObserver(
+    ([entry]) => railWrap.classList.toggle('is-stuck', !entry.isIntersecting),
+    { rootMargin: '-73px 0px 0px 0px', threshold: 0 }
+  ).observe(sentinel);
+
+  // Fase activa: la última cuyo inicio ya cruzó la línea justo debajo del riel.
+  // Se calcula en cada scroll (no por bandas de intersección) para no saltarse
+  // fases cortas como "Gestión", que solo tiene una etapa.
+  const TRIGGER_LINE = 140; // px desde arriba, debajo del riel pegajoso
+  let activeCard = null;
+
+  function updateActiveFase() {
+    let current = fases[0];
+    for (const fase of fases) {
+      if (fase.getBoundingClientRect().top <= TRIGGER_LINE) current = fase;
+      else break;
+    }
+    const card = cards['#' + current.id];
+    if (card && card !== activeCard) {
+      if (activeCard) activeCard.classList.remove('active');
+      card.classList.add('active');
+      activeCard = card;
+    }
+  }
+
+  let raf = null;
+  window.addEventListener('scroll', () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(updateActiveFase);
+  }, { passive: true });
+
+  updateActiveFase();
+})();

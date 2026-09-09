@@ -670,6 +670,19 @@ section { padding: 6rem 0; }
 /* ── Proceso: riel de fases (vista panorámica) ── */
 .proceso-rail-wrap {
   margin-top: 3rem;
+  position: sticky;
+  top: 4.5rem;
+  z-index: 20;
+  background: var(--black);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding: 0 2rem;
+  transition: box-shadow 0.25s ease;
+}
+
+.proceso-rail-wrap.is-stuck {
+  box-shadow: 0 12px 24px -12px rgba(0,0,0,0.6);
+  padding-bottom: 0.5rem;
 }
 
 .proceso-rail-hint {
@@ -700,7 +713,8 @@ section { padding: 6rem 0; }
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  transition: background 0.25s ease;
+  border-bottom: 2px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .prail-card:hover { background: rgba(255,255,255,0.04); }
@@ -711,11 +725,14 @@ section { padding: 6rem 0; }
   font-weight: 700;
   color: var(--red);
   letter-spacing: 0.06em;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
 }
 
 .prail-card h3 {
   font-size: 1.05rem;
-  color: var(--white);
+  color: rgba(245,244,240,0.6);
+  transition: color 0.25s ease;
 }
 
 .prail-count {
@@ -725,6 +742,15 @@ section { padding: 6rem 0; }
   text-transform: uppercase;
   color: rgba(245,244,240,0.4);
 }
+
+/* Fase activa según scroll (sticky rail) */
+.prail-card.active {
+  background: rgba(200,16,46,0.08);
+  border-color: var(--red);
+}
+
+.prail-card.active .prail-num { opacity: 1; }
+.prail-card.active h3 { color: var(--white); }
 
 /* ── Proceso: acordeón de 12 etapas ── */
 .proceso-acc {
@@ -763,14 +789,14 @@ section { padding: 6rem 0; }
 
 .pacc-trigger {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 1.1rem 0;
+  padding: 1.35rem 0;
   font-family: inherit;
   color: var(--white);
   text-align: left;
@@ -778,10 +804,30 @@ section { padding: 6rem 0; }
 
 .pacc-trigger:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
+.pacc-index {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--red);
+  opacity: 0.55;
+  font-variant-numeric: tabular-nums;
+  transition: opacity 0.2s ease;
+}
+
+.pacc-item.open .pacc-index,
+.pacc-trigger:hover .pacc-index { opacity: 1; }
+
 .pacc-title {
   font-family: var(--font-heading);
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 480px) {
+  .pacc-trigger { grid-template-columns: 2.25rem 1fr auto; gap: 0.75rem; }
+  .pacc-index { font-size: 1.1rem; }
+  .pacc-title { font-size: 1.02rem; }
 }
 
 .pacc-chev {
@@ -808,6 +854,11 @@ section { padding: 6rem 0; }
   line-height: 1.65;
   max-width: 46rem;
   padding-bottom: 1.25rem;
+  padding-left: 3rem;
+}
+
+@media (max-width: 480px) {
+  .pacc-panel p { padding-left: 2.25rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1527,4 +1578,5 @@ footer {
   .hero-content h1 { font-size: 2.2rem; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+  .proceso-rail-wrap { margin-left: -1.25rem; margin-right: -1.25rem; padding: 0 1.25rem; }
 }
