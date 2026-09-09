@@ -200,20 +200,22 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   // Se calcula en cada scroll (no por bandas de intersección) para no saltarse
   // fases cortas como "Gestión", que solo tiene una etapa.
   const TRIGGER_LINE = 140; // px desde arriba, debajo del riel pegajoso
+  const progressBar = document.getElementById('proceso-progress-bar');
   let activeCard = null;
 
   function updateActiveFase() {
     let current = fases[0];
-    for (const fase of fases) {
-      if (fase.getBoundingClientRect().top <= TRIGGER_LINE) current = fase;
-      else break;
-    }
+    let index = 0;
+    fases.forEach((fase, i) => {
+      if (fase.getBoundingClientRect().top <= TRIGGER_LINE) { current = fase; index = i; }
+    });
     const card = cards['#' + current.id];
     if (card && card !== activeCard) {
       if (activeCard) activeCard.classList.remove('active');
       card.classList.add('active');
       activeCard = card;
     }
+    if (progressBar) progressBar.style.width = ((index + 1) / fases.length * 100) + '%';
   }
 
   let raf = null;

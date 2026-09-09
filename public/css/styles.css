@@ -677,11 +677,13 @@ section { padding: 6rem 0; }
   margin-left: -2rem;
   margin-right: -2rem;
   padding: 0 2rem;
-  transition: box-shadow 0.25s ease;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease, padding-bottom 0.25s ease;
 }
 
+/* Sobre fondo negro una box-shadow no se ve — el corte se marca con un borde real */
 .proceso-rail-wrap.is-stuck {
-  box-shadow: 0 12px 24px -12px rgba(0,0,0,0.6);
+  border-bottom-color: rgba(255,255,255,0.12);
   padding-bottom: 0.5rem;
 }
 
@@ -703,6 +705,26 @@ section { padding: 6rem 0; }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
+  scrollbar-color: var(--red) rgba(255,255,255,0.08);
+}
+
+/* Chrome / Edge / Safari — Firefox usa scrollbar-width/color de arriba */
+.proceso-rail::-webkit-scrollbar { height: 3px; }
+.proceso-rail::-webkit-scrollbar-track { background: rgba(255,255,255,0.08); }
+.proceso-rail::-webkit-scrollbar-thumb { background: var(--red); }
+
+/* Barra de progreso: refuerza "vas en la fase X de 5", no lista infinita */
+.proceso-progress {
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  margin-top: 1px;
+}
+
+.proceso-progress-bar {
+  height: 100%;
+  width: 20%;
+  background: var(--red);
+  transition: width 0.3s ease;
 }
 
 .prail-card {
