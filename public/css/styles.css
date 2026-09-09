@@ -660,32 +660,48 @@ section { padding: 6rem 0; }
 
 #proceso .section-label { color: var(--red); }
 
-#proceso h2 {
-  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
-  color: var(--white);
-  max-width: 680px;
-  margin-bottom: 3rem;
-}
-
-/* ── Proceso: figura única de fase activa (sin scroll horizontal) ── */
-.proceso-phase-wrap {
-  margin-top: 3rem;
+/* ── Encabezado pegajoso: etiqueta + título + fase activa, como una unidad ── */
+.proceso-sticky {
   position: sticky;
   top: 4.5rem;
   z-index: 20;
   background: var(--black);
-  margin-left: -2rem;
-  margin-right: -2rem;
-  padding: 1.25rem 2rem;
+  margin: 0 -2rem;
+  padding: 0 2rem 1.25rem;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.25s ease;
+  transition: border-color 0.25s ease, padding-bottom 0.25s ease;
 }
 
-/* Sobre fondo negro una box-shadow no se ve — el corte se marca con un borde real */
-.proceso-phase-wrap.is-stuck {
+.proceso-sticky.is-stuck {
   border-bottom-color: rgba(255,255,255,0.12);
+  padding-bottom: 0.75rem;
 }
 
+#proceso h2 {
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+  color: var(--white);
+  max-width: 680px;
+  margin: 0;
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+  transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
+  max-height: 12rem;
+  overflow: hidden;
+}
+
+/* Una vez pegado, el título se recoge para no comerse toda la pantalla */
+.proceso-sticky.is-stuck h2 {
+  max-height: 0;
+  padding-top: 0.75rem;
+  padding-bottom: 0;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #proceso h2 { transition: none; }
+}
+
+/* ── Proceso: figura única de fase activa (sin scroll horizontal) ── */
 .pphase {
   display: flex;
   align-items: center;
@@ -793,17 +809,36 @@ section { padding: 6rem 0; }
   .pphase-list, .pphase-list li { transition: none; animation: none; opacity: 1; transform: none; }
 }
 
-/* Zonas de scroll invisibles: marcan cuánto dura cada fase (más etapas, más scroll) */
+/* Zonas de scroll: marcan cuánto dura cada fase (más etapas, más scroll).
+   Se mantienen cortas para no dejar tramos vacíos largos, y un numeral
+   tenue de fondo evita que se sientan como un espacio roto. */
 .proceso-scroll {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+  position: relative;
 }
 
 .pacc-fase {
-  min-height: calc(var(--weight) * 12vh + 8rem);
+  position: relative;
+  min-height: calc(var(--weight) * 70px + 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.pacc-fase::before {
+  content: attr(data-num);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 9rem;
+  line-height: 1;
+  color: rgba(255,255,255,0.035);
+  pointer-events: none;
 }
 
 @media (max-width: 560px) {
-  .pacc-fase { min-height: calc(var(--weight) * 16vh + 6rem); }
+  .pacc-fase { min-height: calc(var(--weight) * 90px + 3rem); }
+  .pacc-fase::before { font-size: 6rem; }
 }
 
 /* ============================================================

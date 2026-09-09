@@ -146,7 +146,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // ── Proceso: figura de fase activa — se actualiza sola al hacer scroll ──
 (function () {
-  const phaseWrap = document.querySelector('.proceso-phase-wrap');
+  const phaseWrap = document.querySelector('.proceso-sticky');
   const fases = Array.from(document.querySelectorAll('.pacc-fase'));
   if (!phaseWrap || !fases.length) return;
 
@@ -178,10 +178,11 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     { rootMargin: '-73px 0px 0px 0px', threshold: 0 }
   ).observe(sentinel);
 
-  // Fase activa: la última cuyo inicio ya cruzó la línea justo debajo de la figura.
-  // Se calcula en cada scroll (no por bandas de intersección) para no saltarse
-  // fases cortas como "Gestión", que solo tiene una etapa.
-  const TRIGGER_LINE = 140; // px desde arriba
+  // Fase activa: la última cuyo inicio ya cruzó el borde inferior del
+  // encabezado pegajoso. Se mide en vivo (no un número fijo) porque ese
+  // encabezado cambia de alto cuando el título se recoge al pegarse.
+  // Se calcula en cada scroll (no por bandas de intersección) para no
+  // saltarse fases cortas como "Gestión", que solo tiene una etapa.
   let activeFase = fases[0];
   let switchTimer = null;
 
@@ -196,10 +197,11 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   }
 
   function updateActiveFase() {
+    const triggerLine = phaseWrap.getBoundingClientRect().bottom;
     let current = fases[0];
     let index = 0;
     fases.forEach((fase, i) => {
-      if (fase.getBoundingClientRect().top <= TRIGGER_LINE) { current = fase; index = i; }
+      if (fase.getBoundingClientRect().top <= triggerLine) { current = fase; index = i; }
     });
     if (current === activeFase) return;
     activeFase = current;
