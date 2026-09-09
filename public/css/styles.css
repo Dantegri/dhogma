@@ -682,23 +682,7 @@ section { padding: 6rem 0; }
   color: var(--white);
   max-width: 680px;
   margin: 0;
-  padding-top: 2.5rem;
-  padding-bottom: 2rem;
-  transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
-  max-height: 12rem;
-  overflow: hidden;
-}
-
-/* Una vez pegado, el título se recoge para no comerse toda la pantalla */
-.proceso-sticky.is-stuck h2 {
-  max-height: 0;
-  padding-top: 0.75rem;
-  padding-bottom: 0;
-  opacity: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #proceso h2 { transition: none; }
+  padding: 2.5rem 0 2rem;
 }
 
 /* ── Proceso: figura única de fase activa (sin scroll horizontal) ── */
