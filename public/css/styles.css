@@ -721,7 +721,7 @@ section { padding: 6rem 0; }
 
 .prail-num {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--red);
   letter-spacing: 0.06em;
@@ -730,7 +730,7 @@ section { padding: 6rem 0; }
 }
 
 .prail-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: rgba(245,244,240,0.6);
   transition: color 0.25s ease;
 }
@@ -806,7 +806,7 @@ section { padding: 6rem 0; }
 
 .pacc-index {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--red);
   opacity: 0.55;
@@ -819,15 +819,15 @@ section { padding: 6rem 0; }
 
 .pacc-title {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 @media (max-width: 480px) {
   .pacc-trigger { grid-template-columns: 2.25rem 1fr auto; gap: 0.75rem; }
-  .pacc-index { font-size: 0.68rem; }
-  .pacc-title { font-size: 0.95rem; }
+  .pacc-index { font-size: 1.1rem; }
+  .pacc-title { font-size: 1.02rem; }
 }
 
 .pacc-chev {
