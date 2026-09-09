@@ -124,16 +124,14 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         projects.forEach(p => {
           const fig = document.createElement('figure');
           fig.className = 'pf-item';
-          const nivTag = p.niveles && p.niveles !== '—'
-            ? `<span class="pf-tag">${p.niveles}</span>` : '';
-          const conTag = p.construccion && p.construccion !== '—'
-            ? `<span class="pf-tag red">${p.construccion}</span>` : '';
+          const specs = [p.niveles, p.construccion].filter(v => v && v !== '—').join(' · ');
           fig.innerHTML = `
             <img src="${p.img}" alt="${p.titulo}" loading="lazy" />
             <figcaption>
-              <strong>${p.titulo}</strong>
-              ${p.ubicacion ? `<span class="pf-loc">${p.ubicacion}</span>` : ''}
-              <div class="pf-tags">${conTag}${nivTag}</div>
+              <div>
+                <strong>${p.titulo}</strong>
+                ${specs ? `<span class="pf-loc">${specs}</span>` : ''}
+              </div>
             </figcaption>`;
           grid.appendChild(fig);
         });

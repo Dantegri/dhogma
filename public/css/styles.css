@@ -1330,77 +1330,83 @@ section { padding: 6rem 0; }
 
 .pf-close:hover { background: rgba(255,255,255,0.14); }
 
-.pf-grid {
+/* El scroll vive en este envoltorio, NO en el grid: un grid con su propio
+   overflow-y:auto mide su alto disponible antes de medir su contenido, y
+   Chrome colapsa las filas "auto" a esa altura en vez de a la de las fotos
+   (todas las tarjetas terminaban aplastadas a ~44px sin importar la imagen).
+   Separando "quién hace scroll" de "quién mide el contenido" se evita. */
+.pf-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+}
+
+.pf-grid {
   padding: 1.5rem 2rem 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
+/* Mismo formato que las tarjetas del anticipo (.proyecto-card): imagen 4:3
+   completa + overlay con nombre y specs al pasar el mouse. Sin la función
+   de botón — aquí no hay a dónde más llevar al clic, es el contenido final. */
 .pf-item {
+  position: relative;
   margin: 0;
   border-radius: 0.6rem;
   overflow: hidden;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
-}
-
-.pf-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  background: var(--gray-light);
 }
 
 .pf-item img {
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s ease;
 }
 
+.pf-item:hover img { transform: scale(1.04); }
+
 .pf-item figcaption {
-  padding: 0.75rem 0.9rem 0.85rem;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(17,17,17,0.85) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
 }
+
+.pf-item:hover figcaption { opacity: 1; }
 
 .pf-item figcaption strong {
   display: block;
   font-family: var(--font-heading);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--white);
-  margin-bottom: 0.15rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .pf-item figcaption .pf-loc {
-  font-size: 0.7rem;
-  color: rgba(245,244,240,0.45);
-  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(245,244,240,0.6);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.pf-item figcaption .pf-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
+@media (max-width: 900px) {
+  .pf-item figcaption { opacity: 1; }
 }
-
-.pf-tag {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  background: rgba(255,255,255,0.07);
-  border-radius: 3px;
-  padding: 0.15rem 0.45rem;
-  color: rgba(245,244,240,0.6);
-}
-
-.pf-tag.red { background: rgba(200,16,46,0.18); color: #e8697e; }
 
 @media (max-width: 1024px) { .pf-grid { grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 640px)  {
